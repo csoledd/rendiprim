@@ -1,0 +1,262 @@
+@{
+    ViewData["Title"] = "Nueva Contraseña";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema Rendiciones Primar</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            background: url('/images/salmon_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container { 
+            flex: 1 0 auto; 
+            width: 100%; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 0 20px 0; 
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: center; 
+        }
+        .user { 
+            display: flex; 
+            width: 100%; 
+            min-height: 480px; 
+            max-width: 900px; 
+            background: #fff; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+            margin-top: 32px; 
+        }
+        .formBox { 
+            flex: 1 1 340px; 
+            max-width: 380px; 
+            padding: 48px 32px 32px 32px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fff;
+        }
+        .imageBox { 
+            flex: 1 1 400px; 
+            padding: 40px 32px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            background:rgb(19, 100, 137); 
+            color: #fff; 
+            border-radius: 0 16px 16px 0; 
+            position: relative;
+            overflow: hidden;
+        }
+        .imageBox .content {
+            position: relative;
+        }
+        .footer-login { 
+            flex-shrink: 0; 
+            width: 100%; 
+            text-align: center; 
+            color: #fff; 
+            font-size: 0.62rem; 
+            padding: 1px 0 1px 0; 
+            margin-top: 18px; 
+            background: none; 
+            box-shadow: none; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .success-message { 
+            color: #28a745; 
+            background-color: #d4edda; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #28a745; 
+            font-size: 14px; 
+        }
+        .error-message { 
+            color: #dc3545; 
+            background-color: #f8d7da; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #dc3545; 
+            font-size: 14px; 
+        }
+    </style>
+
+    <div class="container">
+        <div class="user">
+            <div class="formBox">
+                <div class="logo top-logo">
+                    <img src="~/images/logo.png" alt="Primar Logo" asp-append-version="true">
+                </div>
+                
+                <form method="post" id="password-form">
+                    <h2>Nueva Contraseña</h2>
+                    <p style="text-align: center; color: #6c757d; margin-bottom: 20px;">
+                        Ingresa tu nueva contraseña
+                    </p>
+                    
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="error-message">@ViewBag.Error</div>
+                    }
+                    
+                    <div class="inputBox">
+                        <input type="password" name="nuevaContrasena" id="nueva-contrasena" required placeholder="Nueva Contraseña">
+                        <span></span>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="confirmarContrasena" id="confirmar-contrasena" required placeholder="Confirmar Contraseña">
+                        <span></span>
+                    </div>
+                    <button type="submit" class="btn">Cambiar Contraseña</button>
+                    <a href="@Url.Action("Login", "Account")" style="display: inline-block; color: #21759b; text-decoration: none; margin-top: 15px; font-size: 14px;">
+                        <i class="fas fa-arrow-left"></i> Volver al inicio de sesión
+                    </a>
+                </form>
+            </div>
+            <div class="imageBox">
+                <div class="content">
+                    <h2>Cambio de Contraseña</h2>
+                    <p>Estás a un paso de recuperar el acceso a tu cuenta.</p>
+                    <p>Ingresa una nueva contraseña segura que puedas recordar fácilmente.</p>
+                    <p>Recomendaciones para una contraseña segura:</p>
+                    <ul style="text-align: left; margin-left: 20px;">
+                        <li>Al menos 6 caracteres</li>
+                        <li>Combina letras y números</li>
+                        <li>Evita información personal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-login">
+        © @DateTime.Now.Year Catalina Núñez
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('password-form');
+        const nuevaContrasena = document.getElementById('nueva-contrasena');
+        const confirmarContrasena = document.getElementById('confirmar-contrasena');
+
+        // Obtener token y email de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        const email = urlParams.get('email');
+
+        if (!token || !email) {
+            showError('Enlace inválido');
+            return;
+        }
+
+        function showError(message) {
+            let errorDiv = document.querySelector('.error-message');
+            if (!errorDiv) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                form.insertBefore(errorDiv, form.querySelector('h2').nextSibling);
+            }
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            let successDiv = document.querySelector('.success-message');
+            if (!successDiv) {
+                successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                form.insertBefore(successDiv, form.querySelector('h2').nextSibling);
+            }
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        function clearMessages() {
+            const errorDiv = document.querySelector('.error-message');
+            const successDiv = document.querySelector('.success-message');
+            if (errorDiv) errorDiv.style.display = 'none';
+            if (successDiv) successDiv.style.display = 'none';
+        }
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            clearMessages();
+
+            const nueva = nuevaContrasena.value;
+            const confirmar = confirmarContrasena.value;
+
+            if (!nueva || !confirmar) {
+                showError('Por favor, completa todos los campos');
+                return;
+            }
+
+            if (nueva !== confirmar) {
+                showError('Las contraseñas no coinciden');
+                return;
+            }
+
+            if (nueva.length < 6) {
+                showError('La contraseña debe tener al menos 6 caracteres');
+                return;
+            }
+
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.textContent = 'Cambiando...';
+
+            try {
+                const response = await fetch('/Account/CambiarContrasenaConToken', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `token=${encodeURIComponent(token)}&email=${encodeURIComponent(email)}&nuevaContrasena=${encodeURIComponent(nueva)}&confirmarContrasena=${encodeURIComponent(confirmar)}`
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccess('Contraseña cambiada exitosamente. Serás redirigido al inicio de sesión.');
+                    setTimeout(() => {
+                        window.location.href = '/Account/Login';
+                    }, 2000);
+                } else {
+                    showError(result.message || 'Error al cambiar la contraseña');
+                }
+            } catch (error) {
+                showError('Error de conexión. Por favor, intenta nuevamente.');
+            } finally {
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        });
+
+        // Limpiar mensajes al escribir
+        nuevaContrasena.addEventListener('input', clearMessages);
+        confirmarContrasena.addEventListener('input', clearMessages);
+    });
+    </script>
+</body>
+</html> 

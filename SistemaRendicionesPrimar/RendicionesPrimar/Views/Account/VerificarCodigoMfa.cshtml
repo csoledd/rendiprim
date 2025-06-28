@@ -1,0 +1,247 @@
+@{
+    ViewData["Title"] = "Verificación de Seguridad";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Rendiciones</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <style>
+        html, body { height: 100%; margin: 0; padding: 0; }
+        body { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            background: url('/images/salmon_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container { 
+            flex: 1 0 auto; 
+            width: 100%; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 40px 0 20px 0; 
+            display: flex; 
+            align-items: flex-start; 
+            justify-content: center; 
+        }
+        .user { 
+            display: flex; 
+            width: 100%; 
+            min-height: 480px; 
+            max-width: 900px; 
+            background: #fff; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15); 
+            overflow: hidden; 
+            margin-top: 32px; 
+        }
+        .formBox { 
+            flex: 1 1 340px; 
+            max-width: 380px; 
+            padding: 48px 32px 32px 32px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fff;
+        }
+        .imageBox { 
+            flex: 1 1 400px; 
+            padding: 40px 32px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            background:rgb(19, 100, 137); 
+            color: #fff; 
+            border-radius: 0 16px 16px 0; 
+            position: relative;
+            overflow: hidden;
+        }
+        .imageBox .content {
+            position: relative;
+        }
+        .footer-login { 
+            flex-shrink: 0; 
+            width: 100%; 
+            text-align: center; 
+            color: #fff; 
+            font-size: 0.62rem; 
+            padding: 1px 0 1px 0; 
+            margin-top: 18px; 
+            background: none; 
+            box-shadow: none; 
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .success-message { 
+            color: #28a745; 
+            background-color: #d4edda; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #28a745; 
+            font-size: 14px; 
+        }
+        .error-message { 
+            color: #dc3545; 
+            background-color: #f8d7da; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #dc3545; 
+            font-size: 14px; 
+        }
+        .warning-message { 
+            color: #856404; 
+            background-color: #fff3cd; 
+            padding: 10px; 
+            border-radius: 5px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #ffc107; 
+            font-size: 14px; 
+        }
+    </style>
+
+    <div class="container">
+        <div class="user">
+            <div class="formBox">
+                <div class="logo top-logo">
+                    <img src="~/images/logo.png" alt="Primar Logo" asp-append-version="true">
+                </div>
+                <form id="verificarForm">
+                    <h2><i class="fas fa-shield-alt"></i> Verificación de Seguridad</h2>
+                    <p style="text-align: center; color: #6c757d; margin-bottom: 20px;">
+                        Ingresa el código de 6 dígitos enviado a tu correo
+                    </p>
+                    <div id="alertContainer"></div>
+                    <div class="inputBox">
+                        <input type="text" id="codigo" name="codigo" required maxlength="6" pattern="[0-9]{6}" placeholder="Código de Verificación" autocomplete="off">
+                        <span></span>
+                    </div>
+                    <div class="form-text" style="margin-bottom: 10px;">
+                        <i class="fas fa-info-circle"></i> Código de 6 dígitos enviado a <strong id="emailMostrar"></strong>
+                    </div>
+                    <button type="submit" class="btn" id="btnVerificar">
+                        <i class="fas fa-check"></i> Verificar Código
+                    </button>
+                    <a href="#" class="btn-link" id="btnReenviar" style="margin-top: 10px; display: inline-block;">
+                        <i class="fas fa-redo"></i> Reenviar Código
+                    </a>
+                    <a href="@Url.Action("Login")" class="btn-link" style="display: inline-block; margin-top: 10px;">
+                        <i class="fas fa-arrow-left"></i> Volver al Login
+                    </a>
+                </form>
+            </div>
+            <div class="imageBox">
+                <div class="content">
+                    <h2><i class="fas fa-key"></i> Seguridad MFA</h2>
+                    <p>Por tu seguridad, debes ingresar el código de 6 dígitos que enviamos a tu correo electrónico.</p>
+                    <p>Si no lo ves, revisa tu carpeta de spam o solicita reenviarlo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-login">
+        © @DateTime.Now.Year Primar S.A.
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            if (email) {
+                $('#emailMostrar').text(email);
+            }
+            $('#codigo').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '');
+                if (value.length > 6) {
+                    value = value.substring(0, 6);
+                }
+                $(this).val(value);
+            });
+            $('#verificarForm').on('submit', function(e) {
+                e.preventDefault();
+                const codigo = $('#codigo').val().trim();
+                if (codigo.length !== 6) {
+                    mostrarAlerta('Por favor, ingresa un código de 6 dígitos.', 'warning');
+                    return;
+                }
+                $('#btnVerificar').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Verificando...');
+                $.ajax({
+                    url: '@Url.Action("VerificarCodigoMfa")',
+                    type: 'POST',
+                    data: { email: email, codigo: codigo },
+                    success: function(response) {
+                        if (response.success) {
+                            mostrarAlerta(response.message, 'success');
+                            setTimeout(function() {
+                                window.location.href = response.redirectUrl;
+                            }, 1200);
+                        } else {
+                            mostrarAlerta(response.message, 'danger');
+                            $('#codigo').val('').focus();
+                        }
+                    },
+                    error: function() {
+                        mostrarAlerta('Error de conexión. Por favor, intenta nuevamente.', 'danger');
+                    },
+                    complete: function() {
+                        $('#btnVerificar').prop('disabled', false).html('<i class="fas fa-check"></i> Verificar Código');
+                    }
+                });
+            });
+            $('#btnReenviar').on('click', function(e) {
+                e.preventDefault();
+                if (!email) {
+                    mostrarAlerta('Email no válido.', 'danger');
+                    return;
+                }
+                $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                $.ajax({
+                    url: '@Url.Action("EnviarCodigoRecuperacion")',
+                    type: 'POST',
+                    data: { email: email },
+                    success: function(response) {
+                        if (response.success) {
+                            mostrarAlerta('Código reenviado exitosamente. Revisa tu correo.', 'success');
+                            $('#codigo').val('').focus();
+                        } else {
+                            mostrarAlerta(response.message, 'danger');
+                        }
+                    },
+                    error: function() {
+                        mostrarAlerta('Error al reenviar el código. Por favor, intenta nuevamente.', 'danger');
+                    },
+                    complete: function() {
+                        $('#btnReenviar').prop('disabled', false).html('<i class="fas fa-redo"></i> Reenviar Código');
+                    }
+                });
+            });
+            function mostrarAlerta(mensaje, tipo) {
+                let tipoClase = 'alert-danger';
+                if (tipo === 'success') tipoClase = 'alert-success';
+                if (tipo === 'warning') tipoClase = 'alert-warning';
+                const alertHtml = `<div class="alert ${tipoClase} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-${tipo === 'success' ? 'check-circle' : tipo === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i>
+                        ${mensaje}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>`;
+                $('#alertContainer').html(alertHtml);
+            }
+            $('#codigo').focus();
+        });
+    </script>
+</body>
+</html> 
+</html> 

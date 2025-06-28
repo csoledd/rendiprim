@@ -1,0 +1,809 @@
+@model RendicionesPrimar.Models.ViewModels.DashboardViewModel
+@{
+    ViewData["Title"] = "Primar | Sistema de Rendiciones";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Portal - Sistema de Rendiciones | Primar S.A.</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Header simple -->
+    <header class="header">
+        <div class="header-content">
+            <div class="brand">
+                <i class="fas fa-building"></i>
+                <div class="brand-text">
+                    <h1>Primar S.A.</h1>
+                    <span>Sistema de Rendiciones</span>
+                </div>
+            </div>
+            
+            <nav class="nav">
+                <a href="#" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    Mi Portal
+                </a>
+                <a href="@Url.Action("Crear", "Rendiciones")" class="nav-link">
+                    <i class="fas fa-plus"></i>
+                    Nueva Rendición
+                </a>
+                <a href="@Url.Action("Index", "Rendiciones")" class="nav-link">
+                    <i class="fas fa-list"></i>
+                    Mis Rendiciones
+                </a>
+                <a href="@Url.Action("Notificaciones", "Home")" class="nav-link">
+                    <i class="fas fa-bell"></i>
+                    Notificaciones
+                    @if (ViewBag.NotificacionesNoLeidas != null && ViewBag.NotificacionesNoLeidas > 0)
+                    {
+                        <span class="badge">@ViewBag.NotificacionesNoLeidas</span>
+                    }
+                </a>
+            </nav>
+            
+            <div class="user-section">
+                <div class="user-info">
+                    <span class="user-name">@(ViewBag.UserName ?? "Usuario")</span>
+                    <span class="user-role">Empleado</span>
+                </div>
+                <button class="btn-logout" onclick="window.location.href='@Url.Action("Logout", "Account")'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Header del dashboard -->
+            <div class="dashboard-header" style="position:relative;">
+                <!-- Contenedor para salmones animados SOLO dentro del recuadro -->
+                <div class="salmon-container" id="salmonContainer" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;pointer-events:none;overflow:hidden;"></div>
+                <div style="position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:32px;width:100%;">
+                    <div class="welcome-section" style="text-align:left;flex-grow:1;">
+                        <h1>¡Hola, @(ViewBag.UserName ?? "Usuario")!</h1>
+                        <p>Bienvenido a tu panel de control personal</p>
+                        <span class="date">@DateTime.Now.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))</span>
+                    </div>
+                    <div class="quick-action" style="flex-shrink:0;">
+                        <a href="@Url.Action("Crear", "Rendiciones")" class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Nueva Rendición
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen de mis rendiciones -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>@(Model?.TotalRendiciones ?? 0)</h3>
+                        <p>Total de Rendiciones</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon pending">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>@(Model?.RendicionesPendientes ?? 0)</h3>
+                        <p>Pendientes</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon approved">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>@(Model?.RendicionesAprobadas ?? 0)</h3>
+                        <p>Aprobadas</p>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon rejected">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>@(Model?.RendicionesRechazadas ?? 0)</h3>
+                        <p>Rechazadas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acciones rápidas -->
+            <div class="actions-section">
+                <h2>Acciones Rápidas</h2>
+                <div class="actions-grid">
+                    <a href="@Url.Action("Crear", "Rendiciones")" class="action-card primary">
+                        <div class="action-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Crear Rendición</h3>
+                            <p>Solicitar reembolso de gastos</p>
+                        </div>
+                    </a>
+
+                    <a href="@Url.Action("Index", "Rendiciones")" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-list-alt"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Ver Mis Rendiciones</h3>
+                            <p>Revisar estado de solicitudes</p>
+                        </div>
+                    </a>
+
+                    <a href="@Url.Action("Notificaciones", "Home")" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Notificaciones</h3>
+                            <p>Ver actualizaciones del sistema</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Ayuda</h3>
+                            <p>Guías y soporte</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Actividad reciente -->
+            @if (Model?.UltimasRendiciones != null && Model.UltimasRendiciones.Any())
+            {
+                <div class="recent-section">
+                    <h2>Actividad Reciente</h2>
+                    <div class="recent-list">
+                        @foreach (var actividad in Model.UltimasRendiciones)
+                        {
+                            <div class="recent-item">
+                                <div class="recent-icon">
+                                    <i class="fas fa-file-invoice"></i>
+                                </div>
+                                <div class="recent-content">
+                                    <p>@actividad</p>
+                                    <span>Hace 2 horas</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>No tienes rendiciones aún</h3>
+                    <p>Crea tu primera rendición para comenzar</p>
+                    <a href="@Url.Action("Crear", "Rendiciones")" class="btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Crear Primera Rendición
+                    </a>
+                </div>
+            }
+
+        </div>
+    </main>
+</div>
+
+<style>
+/* Variables */
+:root {
+    --primary:rgb(31, 90, 136);
+    --primary-dark:rgb(31, 90, 136);
+    --success:rgb(102, 178, 116);
+    --warning:rgb(215, 183, 127);
+    --danger:rgb(218, 89, 89);
+    --text: #1e293b;
+    --text-light: #64748b;
+    --background: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 12px;
+}
+
+.brand i {
+    font-size: 1.5rem;
+}
+
+.brand-text h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.brand-text span {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.95);
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: white;
+    background-color: rgba(255,255,255,0.15);
+    text-decoration: none;
+}
+
+.nav-link.active {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--danger);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 24px;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.user-info {
+    color: white;
+    text-align: right;
+}
+
+.user-name {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.user-role {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 2px;
+    background: rgba(255,255,255,0.2);
+}
+
+.btn-logout {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+/* Main content */
+.main {
+    flex: 1;
+    padding: 40px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Dashboard header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding: 32px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.welcome-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.welcome-section p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Summary grid */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.summary-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.summary-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+}
+
+.summary-icon.pending {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.summary-icon.approved {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.summary-icon.rejected {
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--danger);
+}
+
+.summary-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.summary-content p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Actions */
+.actions-section {
+    margin-bottom: 40px;
+}
+
+.actions-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.action-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+}
+
+.action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+    color: inherit;
+    border-color: var(--primary);
+}
+
+.action-card.primary {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.action-card.primary:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.action-card.primary .action-icon {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.action-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.action-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* Recent section */
+.recent-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 24px;
+}
+
+.recent-list {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.recent-item {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+}
+
+.recent-item:last-child {
+    border-bottom: none;
+}
+
+.recent-item:hover {
+    background: var(--background);
+}
+
+.recent-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.recent-content p {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.recent-content span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 2rem;
+    margin: 0 auto 24px;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+/* Responsive */
+@@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 16px 24px;
+        gap: 16px;
+    }
+    
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .user-section {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        padding-left: 0;
+        padding-top: 16px;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+    }
+    
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+<style>
+/* ===== SALMONES ANIMADOS ===== */
+.salmon-container {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    z-index: 1;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.salmon {
+    position: absolute;
+    width: 120px;
+    height: 48px;
+    opacity: 0.35;
+    filter: blur(0.5px) drop-shadow(0 2px 4px rgba(0,0,0,0.10));
+    pointer-events: none;
+    z-index: 1;
+}
+
+.salmon svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.salmon-tail {
+    animation: tailWiggle 2s ease-in-out infinite;
+    transform-origin: 35px 20px;
+}
+
+@@keyframes swimSalmon {
+    0% { left: -120px; opacity: 0; }
+    10% { opacity: 0.35; }
+    90% { opacity: 0.35; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@@keyframes tailWiggle {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+}
+</style>
+
+<!-- JavaScript para control dinámico de los salmones -->
+<!-- JavaScript para control dinámico de los salmones -->
+<!-- JavaScript para control dinámico de los salmones -->
+<script>
+    // Función para crear un salmón
+    function createSalmon() {
+        const container = document.getElementById('salmonContainer');
+        if (!container) return;
+        const salmon = document.createElement('div');
+        salmon.className = 'salmon';
+        // Altura relativa al header
+        const headerHeight = container.offsetHeight;
+        const topPosition = Math.random() * (headerHeight - 48);
+        salmon.style.top = topPosition + 'px';
+        // Duración de animación aleatoria
+        const duration = Math.random() * 10 + 12; // 12-22s
+        salmon.style.animation = `swimSalmon ${duration}s linear forwards`;
+        salmon.innerHTML = `
+            <svg viewBox="0 0 120 48" width="120" height="48">
+                <path d="M35,20 Q55,5 85,15 Q95,20 85,25 Q55,35 35,20" fill="#fa8072" stroke="#e26d60" stroke-width="1"/>
+                <path class="salmon-tail" d="M35,20 Q25,10 15,20 Q25,30 35,20" fill="#fa8072" stroke="#e26d60" stroke-width="1"/>
+                <circle cx="80" cy="18" r="3" fill="black" />
+                <path d="M70,15 Q69,20 70,25" stroke="#e26d60" stroke-width="1.5" fill="none" />
+            </svg>
+        `;
+        container.appendChild(salmon);
+        setTimeout(() => { if (salmon.parentNode) salmon.parentNode.removeChild(salmon); }, (duration + 2) * 1000);
+    }
+    
+    // Inicializar cuando el DOM esté listo
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(createSalmon, 1000);
+        setTimeout(createSalmon, 3000);
+        setTimeout(createSalmon, 5000);
+        setInterval(createSalmon, 5000);
+    });
+</script>
+
+</body>
+</html> 

@@ -1,0 +1,372 @@
+@model IEnumerable<RendicionesPrimar.Models.Rendicion>
+@{
+    ViewData["Title"] = "Rendiciones";
+}
+
+<style>
+    .rendiciones-header {
+        background: var(--primar-white);
+        border-radius: var(--primar-radius);
+        box-shadow: var(--primar-shadow);
+        padding: 32px;
+        margin-bottom: 32px;
+        border-left: 5px solid var(--primar-primary);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .rendiciones-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+        border-radius: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .header-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primar-text);
+        margin: 0;
+        background: var(--primar-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .header-actions {
+        display: flex;
+        gap: 12px;
+    }
+
+    .rendiciones-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+    }
+
+    .rendicion-card {
+        background: var(--primar-white);
+        border-radius: var(--primar-radius);
+        box-shadow: var(--primar-shadow);
+        padding: 24px;
+        border: 1px solid var(--primar-border);
+        transition: var(--primar-transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .rendicion-card:hover {
+        box-shadow: var(--primar-shadow-hover);
+        transform: translateY(-4px);
+    }
+
+    .rendicion-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primar-gradient);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+    }
+
+    .ticket-number {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primar-primary);
+        background: linear-gradient(135deg, var(--primar-primary) 0%, var(--primar-primary-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--primar-text);
+        margin: 12px 0;
+        line-height: 1.4;
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--primar-text-light);
+    }
+
+    .info-item i {
+        width: 16px;
+        color: var(--primar-primary);
+    }
+
+    .info-item strong {
+        color: var(--primar-text);
+        font-weight: 500;
+    }
+
+    .card-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid var(--primar-border);
+    }
+
+    .action-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.025em;
+    }
+
+    .badge-requiere-aprobacion {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        color: #92400e;
+    }
+
+    .badge-listo-pagar {
+        background: linear-gradient(135deg, #d1fae5 0%, #6ee7b7 100%);
+        color: #065f46;
+    }
+
+    .empty-state {
+        background: var(--primar-white);
+        border-radius: var(--primar-radius);
+        box-shadow: var(--primar-shadow);
+        padding: 60px 40px;
+        text-align: center;
+        border: 2px dashed var(--primar-border);
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        color: var(--primar-text-light);
+        margin-bottom: 20px;
+    }
+
+    .empty-state h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--primar-text);
+        margin-bottom: 12px;
+    }
+
+    .empty-state p {
+        color: var(--primar-text-light);
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    @@media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .header-actions {
+            width: 100%;
+            justify-content: flex-start;
+        }
+
+        .rendiciones-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .rendicion-card {
+            padding: 20px;
+        }
+    }
+
+    @@keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- Header de Rendiciones -->
+<div class="rendiciones-header">
+    <div class="header-content">
+        <div>
+            <h1 class="header-title">
+                <i class="fas fa-file-invoice-dollar" style="margin-right: 12px;"></i>
+                Rendiciones
+            </h1>
+            <p style="color: var(--primar-text-light); margin: 8px 0 0 0; font-size: 1rem;">
+                @if (ViewBag.UserRole == "empleado")
+                {
+                    <text>Gestiona tus rendiciones de gastos</text>
+                }
+                else if (ViewBag.UserRole == "aprobador1")
+                {
+                    <text>Revisa y aprueba rendiciones pendientes</text>
+                }
+                else if (ViewBag.UserRole == "aprobador2")
+                {
+                    <text>Aprobación final de rendiciones</text>
+                }
+                else
+                {
+                    <text>Panel de administración de rendiciones</text>
+                }
+            </p>
+        </div>
+        
+        <div class="header-actions">
+            @if (ViewBag.UserRole == "empleado")
+            {
+                <a href="@Url.Action("Crear")" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Nueva Rendición
+                </a>
+            }
+            
+            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">
+                <i class="fas fa-home"></i>
+                Inicio
+            </a>
+        </div>
+    </div>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <i class="fas fa-folder-open"></i>
+        <h3>No hay rendiciones</h3>
+        <p>
+            @if (ViewBag.UserRole == "empleado")
+            {
+                <text>Aún no has creado ninguna rendición. Comienza creando tu primera rendición de gastos.</text>
+            }
+            else
+            {
+                <text>No hay rendiciones pendientes de revisión en este momento.</text>
+            }
+        </p>
+    </div>
+}
+else
+{
+    <div class="rendiciones-grid">
+        @foreach (var rendicion in Model)
+        {
+            <div class="rendicion-card fade-in-up">
+                <div class="card-header">
+                    <div class="ticket-number">@rendicion.NumeroTicket</div>
+                    <span class="status-badge status-@rendicion.Estado.Replace("_", "-")">
+                        @GetEstadoLabel(rendicion.Estado)
+                    </span>
+                </div>
+                
+                <h4 class="card-title">@rendicion.Titulo</h4>
+                
+                <div class="card-info">
+                    @if (ViewBag.UserRole != "empleado")
+                    {
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <strong>Empleado:</strong> @rendicion.Usuario.Nombre
+                        </div>
+                    }
+                    
+                    <div class="info-item">
+                        <i class="fas fa-calendar"></i>
+                        <strong>Fecha:</strong> @rendicion.FechaCreacion.ToString("dd/MM/yyyy HH:mm")
+                    </div>
+                    
+                    @if (rendicion.MontoTotal > 0)
+                    {
+                        <div class="info-item">
+                            <i class="fas fa-dollar-sign"></i>
+                            <strong>Monto:</strong> $@rendicion.MontoTotal.ToString("N0")
+                        </div>
+                    }
+                    
+                    @if (rendicion.ArchivosAdjuntos.Any())
+                    {
+                        <div class="info-item">
+                            <i class="fas fa-paperclip"></i>
+                            <strong>Archivos:</strong> @rendicion.ArchivosAdjuntos.Count adjunto(s)
+                        </div>
+                    }
+                </div>
+                
+                <div class="card-actions">
+                    <a href="@Url.Action("Detalle", new { id = rendicion.Id })" class="btn btn-primary">
+                        <i class="fas fa-eye"></i>
+                        Ver Detalle
+                    </a>
+                    
+                    @if ((ViewBag.UserRole == "aprobador1" && rendicion.Estado == "pendiente") ||
+                         (ViewBag.UserRole == "aprobador2" && rendicion.Estado == "aprobado_1"))
+                    {
+                        <span class="action-badge badge-requiere-aprobacion">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Requiere tu aprobación
+                        </span>
+                    }
+                    else if (ViewBag.UserRole == "aprobador1" && rendicion.Estado == "aprobado_2")
+                    {
+                        <span class="action-badge badge-listo-pagar">
+                            <i class="fas fa-credit-card"></i>
+                            Listo para pagar
+                        </span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@functions {
+    string GetEstadoLabel(string estado)
+    {
+        return estado switch
+        {
+            "pendiente" => "Pendiente",
+            "aprobado_1" => "Aprobado 1° ✓",
+            "aprobado_2" => "Aprobado Final ✓✓",
+            "pagado" => "Pagado ✓✓✓",
+            "rechazado" => "Rechazado",
+            _ => estado
+        };
+    }
+}

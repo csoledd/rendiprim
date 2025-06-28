@@ -1,0 +1,161 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RendicionesPrimar
+build_property.RootNamespace = RendicionesPrimar
+build_property.ProjectDir = C:\SistemaRendicionesPrimar\SistemaRendicionesPrimar\RendicionesPrimar\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\SistemaRendicionesPrimar\SistemaRendicionesPrimar\RendicionesPrimar
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Account/NuevaContrasena.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxOdWV2YUNvbnRyYXNlbmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Account/NuevaContrasenaConMfa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxOdWV2YUNvbnRyYXNlbmFDb25NZmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Account/RecuperarContrasena.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWN1cGVyYXJDb250cmFzZW5hLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Account/VerificarCodigoMfa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZmljYXJDb2RpZ29NZmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Admin/CrearUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXJVc3VhcmlvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Admin/EditarUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdGFyVXN1YXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Empleados/MisRendiciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXE1pc1JlbmRpY2lvbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Empleados/Notificaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXE5vdGlmaWNhY2lvbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Empleados/Perfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9zXFBlcmZpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Gerentes/Notificaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZXNcTm90aWZpY2FjaW9uZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Gerentes/Perfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZXNcUGVyZmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Gerentes/RendicionesPendientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZXNcUmVuZGljaW9uZXNQZW5kaWVudGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/Ayuda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBeXVkYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/DashboardEmpleado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmRFbXBsZWFkby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/DashboardGerente.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmRHZXJlbnRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/DashboardSupervisor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmRTdXBlcnZpc29yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/Notificaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3RpZmljYWNpb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Perfil/InformacionPersonal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXEluZm9ybWFjaW9uUGVyc29uYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Rendiciones/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVuZGljaW9uZXNcQ3JlYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Rendiciones/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVuZGljaW9uZXNcRGV0YWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Rendiciones/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVuZGljaW9uZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Supervisores/Notificaciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJ2aXNvcmVzXE5vdGlmaWNhY2lvbmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Supervisores/Perfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJ2aXNvcmVzXFBlcmZpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Supervisores/RendicionesPendientes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwZXJ2aXNvcmVzXFJlbmRpY2lvbmVzUGVuZGllbnRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/SistemaRendicionesPrimar/SistemaRendicionesPrimar/RendicionesPrimar/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-adml6n1jip

@@ -1,0 +1,646 @@
+@model IEnumerable<RendicionesPrimar.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Gestión de Usuarios";
+}
+
+<div class="users-management-simple">
+    <!-- Header simple -->
+    <div class="page-header-simple">
+        <h1>Gestión de Usuarios</h1>
+        <a href="@Url.Action("CrearUsuario", "Admin")" class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            Nuevo Usuario
+        </a>
+    </div>
+
+    <!-- Mensajes de alerta simples -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <i class="fas fa-check-circle"></i>
+            @TempData["SuccessMessage"]
+            <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-error">
+            <i class="fas fa-exclamation-circle"></i>
+            @TempData["ErrorMessage"]
+            <button type="button" class="alert-close" onclick="this.parentElement.style.display='none'">×</button>
+        </div>
+    }
+
+    <!-- Filtros simples -->
+    <div class="filters-simple">
+        <input type="text" id="searchInput" placeholder="Buscar usuarios..." class="search-input">
+        <select id="roleFilter" class="filter-select">
+            <option value="">Todos los roles</option>
+            <option value="empleado">Empleado</option>
+        </select>
+        <select id="statusFilter" class="filter-select">
+            <option value="">Todos los estados</option>
+            <option value="true">Activo</option>
+            <option value="false">Inactivo</option>
+        </select>
+    </div>
+
+    <!-- Tabla simple -->
+    <div class="table-container">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>EMAIL</th>
+                    <th>ROL</th>
+                    <th>CARGO</th>
+                    <th>DEPARTAMENTO</th>
+                    <th>ESTADO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="usersTableBody">
+                @foreach (var usuario in Model)
+                {
+                    <tr class="user-row" 
+                        data-name="@usuario.Nombre @usuario.NombreCompleto" 
+                        data-email="@usuario.Email" 
+                        data-role="@usuario.Rol" 
+                        data-status="@usuario.Activo.ToString().ToLower()"
+                        data-department="@(usuario.Departamento ?? "")">
+                        <td>
+                            <div class="user-name-cell">
+                                <div class="user-avatar">
+                                    @{
+                                        var initials = "";
+                                        if (!string.IsNullOrEmpty(usuario.Nombre))
+                                        {
+                                            var nameParts = usuario.Nombre.Split(' ');
+                                            initials = nameParts.Length > 1 ? 
+                                                $"{nameParts[0][0]}{nameParts[1][0]}" : 
+                                                $"{nameParts[0][0]}{(nameParts[0].Length > 1 ? nameParts[0][1] : "")}";
+                                        }
+                                    }
+                                    @initials.ToUpper()
+                                </div>
+                                <div class="user-info">
+                                    <div class="name-primary">@usuario.Nombre</div>
+                                    <div class="name-secondary">@usuario.NombreCompleto</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>@usuario.Email</td>
+                        <td>
+                            @switch (usuario.Rol)
+                            {
+                                case "empleado":
+                                    <span class="badge badge-empleado">EMPLEADO</span>
+                                    break;
+                                case "aprobador1":
+                                    <span class="badge badge-supervisor">SUPERVISOR</span>
+                                    break;
+                                case "aprobador2":
+                                    <span class="badge badge-gerente">GERENTE</span>
+                                    break;
+                                case "admin":
+                                    <span class="badge badge-admin">ADMIN</span>
+                                    break;
+                                default:
+                                    <span class="badge">@usuario.Rol.ToUpper()</span>
+                                    break;
+                            }
+                        </td>
+                        <td>@(usuario.Cargo ?? "-")</td>
+                        <td>@(usuario.Departamento ?? "-")</td>
+                        <td>
+                            @if (usuario.Activo)
+                            {
+                                <span class="status-active">
+                                    <i class="fas fa-circle"></i>
+                                    ACTIVO
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="status-inactive">
+                                    <i class="fas fa-circle"></i>
+                                    INACTIVO
+                                </span>
+                            }
+                        </td>
+                        <td>
+                            <div class="actions-cell">
+                                <a href="@Url.Action("EditarUsuario", "Admin", new { id = usuario.Id })" 
+                                   class="btn-action btn-edit" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                @if (usuario.Email != "camila.flores@primar.cl")
+                                {
+                                    <button type="button" class="btn-action btn-delete" 
+                                            onclick="confirmarEliminar(@usuario.Id, '@usuario.Nombre')" 
+                                            title="Eliminar">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mensaje cuando no hay resultados -->
+    <div id="noResults" class="no-results" style="display: none;">
+        <p>No se encontraron usuarios</p>
+    </div>
+</div>
+
+<!-- Modal simple -->
+<div class="modal-overlay" id="modalConfirmarEliminar" style="display: none;">
+    <div class="modal-simple">
+        <div class="modal-header">
+            <h3>Confirmar Eliminación</h3>
+            <button type="button" class="modal-close" onclick="cerrarModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <p>¿Está seguro de que desea eliminar al usuario <strong id="nombreUsuarioEliminar"></strong>?</p>
+            <p class="warning">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="cerrarModal()">Cancelar</button>
+            <form id="formEliminarUsuario" method="post" style="display: inline;">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Variables simples */
+:root {
+    --primary-color: rgb(31, 90, 136);
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --info-color: #06b6d4;
+    --text-color: #374151;
+    --text-light: #6b7280;
+    --border-color: #e5e7eb;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+}
+
+/* Layout simple */
+.users-management-simple {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Header simple */
+.page-header-simple {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header-simple h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Botones simples */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: rgb(31, 90, 136);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: var(--bg-light);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Alertas simples */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 0.875rem;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.alert-error {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.alert-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Filtros simples */
+.filters-simple {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    max-width: 300px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.875rem;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    background: white;
+}
+
+/* Tabla simple */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th {
+    background: var(--bg-light);
+    padding: 16px 12px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.users-table td {
+    padding: 16px 12px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.875rem;
+    color: var(--text-color);
+}
+
+.users-table tr:hover {
+    background: var(--bg-light);
+}
+
+/* Celda de nombre */
+.user-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.name-primary {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.name-secondary {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.badge-empleado {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.badge-supervisor {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.badge-gerente {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.badge-admin {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+/* Estados */
+.status-active {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--success-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-inactive {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.status-active i,
+.status-inactive i {
+    font-size: 0.5rem;
+}
+
+/* Acciones */
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-action {
+    padding: 6px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-edit {
+    background: var(--info-color);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #0891b2;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-delete {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #dc2626;
+}
+
+/* Modal simple */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-simple {
+    background: white;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body .warning {
+    color: var(--warning-color);
+    font-size: 0.875rem;
+    margin-top: 8px;
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+/* Sin resultados */
+.no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-light);
+}
+
+/* Responsive */
+@@media (max-width: 768px) {
+    .users-management-simple {
+        padding: 16px;
+    }
+
+    .page-header-simple {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .filters-simple {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-input {
+        max-width: none;
+    }
+
+    .users-table {
+        font-size: 0.75rem;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 8px 6px;
+    }
+
+    .user-name-cell {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .actions-cell {
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+</style>
+
+@section Scripts {
+    <script>
+        // Filtros simples
+        function filterUsers() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const roleFilter = document.getElementById('roleFilter').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const rows = document.querySelectorAll('.user-row');
+            const noResults = document.getElementById('noResults');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const name = row.dataset.name.toLowerCase();
+                const email = row.dataset.email.toLowerCase();
+                const department = row.dataset.department.toLowerCase();
+                const role = row.dataset.role;
+                const status = row.dataset.status;
+
+                const matchesSearch = name.includes(searchTerm) || 
+                                    email.includes(searchTerm) || 
+                                    department.includes(searchTerm);
+                const matchesRole = !roleFilter || role === roleFilter;
+                const matchesStatus = !statusFilter || status === statusFilter;
+
+                if (matchesSearch && matchesRole && matchesStatus) {
+                    row.style.display = 'table-row';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        function confirmarEliminar(id, nombre) {
+            document.getElementById('nombreUsuarioEliminar').textContent = nombre;
+            document.getElementById('formEliminarUsuario').action = '@Url.Action("EliminarUsuario", "Admin")/' + id;
+            document.getElementById('modalConfirmarEliminar').style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalConfirmarEliminar').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('searchInput').addEventListener('input', filterUsers);
+            document.getElementById('roleFilter').addEventListener('change', filterUsers);
+            document.getElementById('statusFilter').addEventListener('change', filterUsers);
+
+            document.getElementById('modalConfirmarEliminar').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    cerrarModal();
+                }
+            });
+        });
+    </script>
+}
