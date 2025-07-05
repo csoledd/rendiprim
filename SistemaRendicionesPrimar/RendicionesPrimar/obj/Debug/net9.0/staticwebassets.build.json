@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tkLLMRfHO3R91TnKoWQrLJYnI84seNUB+wMWXprze+I=",
+  "Hash": "0dQQwBhpeuS/jNJK2mSHmegu7YCtZ/YfR0RpbfCc/Dw=",
   "Source": "RendicionesPrimar",
   "BasePath": "_content/RendicionesPrimar",
   "Mode": "Default",
@@ -227,12 +227,12 @@
       "OriginalItemSpec": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-q0xmjdusj3.gz",
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-tz0gqm4hdg.gz",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/RendicionesPrimar",
-      "RelativePath": "js/login#[.{fingerprint=q0xmjdusj3}]?.js.gz",
+      "RelativePath": "js/login#[.{fingerprint=tz0gqm4hdg}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -241,8 +241,8 @@
       "RelatedAsset": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\js\\login.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hso4b1ldjv",
-      "Integrity": "gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs=",
+      "Fingerprint": "p4kk6y1t2z",
+      "Integrity": "F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\js\\login.js"
@@ -1172,12 +1172,12 @@
       "OriginalItemSpec": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-lgnyb8yd3x.gz",
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-puqum8ew21.gz",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/RendicionesPrimar",
-      "RelativePath": "css/site#[.{fingerprint=lgnyb8yd3x}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=puqum8ew21}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1186,8 +1186,8 @@
       "RelatedAsset": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "t3adil8czv",
-      "Integrity": "aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A=",
+      "Fingerprint": "ijwqycxyz9",
+      "Integrity": "PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\css\\site.css"
@@ -1564,8 +1564,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "lgnyb8yd3x",
-      "Integrity": "RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA=",
+      "Fingerprint": "puqum8ew21",
+      "Integrity": "cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1669,8 +1669,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "q0xmjdusj3",
-      "Integrity": "Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI=",
+      "Fingerprint": "tz0gqm4hdg",
+      "Integrity": "96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\login.js"
@@ -2978,6 +2978,48 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\106e38b2-8bc7-4e0f-a0d4-c4f658e78e54_Cotizacion_COT-2024-001 (7).pdf",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -2999,6 +3041,90 @@
       "OriginalItemSpec": "wwwroot\\uploads\\106e38b2-8bc7-4e0f-a0d4-c4f658e78e54_Cotizacion_COT-2024-001 (7).pdf"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1)#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "jervrd08p3",
+      "Integrity": "hRS0JjoIokiLg8wFLB1iyL82Bop3NncaNEdbh78arQU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\2c76167b-9750-42f5-aef2-ec198705514d_3.1.2 Planilla evaluación de proyectos (1).xlsx",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -3018,6 +3144,90 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\2c76167b-9750-42f5-aef2-ec198705514d_3.1.2 Planilla evaluación de proyectos (1).xlsx"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "crvjz8bv7x",
+      "Integrity": "iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3qtsovzwdj",
+      "Integrity": "e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf"
     },
     {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\478cb869-3b5f-4ae1-89b5-4dcfe15f073b_cotizacion-COT-1750117196381.pdf",
@@ -3083,6 +3293,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\61e81ddd-7a5d-4d74-851d-1eddbb20b667_Cotizacion_COT-2024-001 (8).pdf"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\71b8a38d-8c13-47ab-aa69-b3e900e99421_cotizacion-COT-1750117196381 (12).pdf",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -3102,6 +3333,69 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\71b8a38d-8c13-47ab-aa69-b3e900e99421_cotizacion-COT-1750117196381 (12).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "2o8jnq2gsg",
+      "Integrity": "Xg6yCDfIg+nQZd5RVqK1X3j0sFtSjXj4dzQ4T1AUd6w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5eflhtuz0z",
+      "Integrity": "LSaqi07RuB8CIVDldjfUIueFS0rCSQ0zhhAonulssEU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf"
     },
     {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\97b90ccd-ec93-4a41-aced-2df4a3c221c5_Cotizacion_COT-2024-001 (10).pdf",
@@ -3125,6 +3419,48 @@
       "OriginalItemSpec": "wwwroot\\uploads\\97b90ccd-ec93-4a41-aced-2df4a3c221c5_Cotizacion_COT-2024-001 (10).pdf"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2)#[.{fingerprint}]?.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "15slhvp529",
+      "Integrity": "td6C8rLKMpRtrWEdohxfoB7EPivyV6nIpMcf5wy6DKo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3qtsovzwdj",
+      "Integrity": "e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\b2c4daef-386b-488d-9530-b65fc76c4353_Reporte_Completo_Equipos_2025-06-12 (1).xlsx",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -3144,6 +3480,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\b2c4daef-386b-488d-9530-b65fc76c4353_Reporte_Completo_Equipos_2025-06-12 (1).xlsx"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "crvjz8bv7x",
+      "Integrity": "iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf"
     },
     {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\cd4c075c-1156-4263-8c09-69d5de25d3a4_Cotizacion_COT-2024-001 (7).pdf",
@@ -3167,6 +3545,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\cd4c075c-1156-4263-8c09-69d5de25d3a4_Cotizacion_COT-2024-001 (7).pdf"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fsb78ds0v2",
+      "Integrity": "kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\de76c35d-fe2c-4d68-a5a7-58f29f9493a9_Cotizacion_COT-2024-001 (7).pdf",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -3188,6 +3587,27 @@
       "OriginalItemSpec": "wwwroot\\uploads\\de76c35d-fe2c-4d68-a5a7-58f29f9493a9_Cotizacion_COT-2024-001 (7).pdf"
     },
     {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
       "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\e8f3718d-9928-4141-b0f2-b7744235528a_cotizacion-COT-1751057366277 (1).pdf",
       "SourceId": "RendicionesPrimar",
       "SourceType": "Discovered",
@@ -3207,6 +3627,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\e8f3718d-9928-4141-b0f2-b7744235528a_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf"
+    },
+    {
+      "Identity": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf",
+      "SourceId": "RendicionesPrimar",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\",
+      "BasePath": "_content/RendicionesPrimar",
+      "RelativePath": "uploads/fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1)#[.{fingerprint}]?.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dgen0ofry7",
+      "Integrity": "7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf"
     }
   ],
   "Endpoints": [
@@ -3808,12 +4270,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-lgnyb8yd3x.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-puqum8ew21.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000406173842"
+          "Quality": "0.000369003690"
         }
       ],
       "ResponseHeaders": [
@@ -3823,15 +4285,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2461"
+          "Value": "2709"
         },
         {
           "Name": "ETag",
-          "Value": "\"aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A=\""
+          "Value": "\"PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3851,13 +4313,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA=\""
+          "Value": "W/\"cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA="
+          "Value": "sha256-cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY="
         }
       ]
     },
@@ -3872,7 +4334,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10908"
+          "Value": "11901"
         },
         {
           "Name": "Content-Type",
@@ -3880,11 +4342,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA=\""
+          "Value": "\"cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3894,13 +4356,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA="
+          "Value": "sha256-cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-lgnyb8yd3x.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-puqum8ew21.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3909,7 +4371,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2461"
+          "Value": "2709"
         },
         {
           "Name": "Content-Type",
@@ -3917,11 +4379,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A=\""
+          "Value": "\"PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3939,18 +4401,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A="
+          "Value": "sha256-PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo="
         }
       ]
     },
     {
-      "Route": "css/site.lgnyb8yd3x.css",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-lgnyb8yd3x.gz",
+      "Route": "css/site.puqum8ew21.css",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-puqum8ew21.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000406173842"
+          "Quality": "0.000369003690"
         }
       ],
       "ResponseHeaders": [
@@ -3960,15 +4422,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2461"
+          "Value": "2709"
         },
         {
           "Name": "ETag",
-          "Value": "\"aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A=\""
+          "Value": "\"PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3988,13 +4450,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA=\""
+          "Value": "W/\"cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lgnyb8yd3x"
+          "Value": "puqum8ew21"
         },
         {
           "Name": "label",
@@ -4002,12 +4464,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA="
+          "Value": "sha256-cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY="
         }
       ]
     },
     {
-      "Route": "css/site.lgnyb8yd3x.css",
+      "Route": "css/site.puqum8ew21.css",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -4017,7 +4479,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10908"
+          "Value": "11901"
         },
         {
           "Name": "Content-Type",
@@ -4025,11 +4487,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA=\""
+          "Value": "\"cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4039,7 +4501,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lgnyb8yd3x"
+          "Value": "puqum8ew21"
         },
         {
           "Name": "label",
@@ -4047,13 +4509,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-RRb4O/6zmQtYUoxi3xzDf3qA3BTf3ej3oybIz8os4aA="
+          "Value": "sha256-cbl/i3/hCrdorWa39Dl9/Mfgcg9rX6hwxnFwa+YSMXY="
         }
       ]
     },
     {
-      "Route": "css/site.lgnyb8yd3x.css.gz",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-lgnyb8yd3x.gz",
+      "Route": "css/site.puqum8ew21.css.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\w37lfmeb0p-puqum8ew21.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4062,7 +4524,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2461"
+          "Value": "2709"
         },
         {
           "Name": "Content-Type",
@@ -4070,11 +4532,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A=\""
+          "Value": "\"PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 16:51:25 GMT"
+          "Value": "Sun, 29 Jun 2025 01:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4092,7 +4554,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lgnyb8yd3x"
+          "Value": "puqum8ew21"
         },
         {
           "Name": "label",
@@ -4100,7 +4562,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-aboYQGmVy9N9gb6+jedeaoHjcZLu6LqPfQVYHGA8i+A="
+          "Value": "sha256-PslWoTbXc3kRi4zAOhzYBQEVHlNQD2jMRt7rY9I3XQo="
         }
       ]
     },
@@ -4866,12 +5328,12 @@
     },
     {
       "Route": "js/login.js",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-q0xmjdusj3.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-tz0gqm4hdg.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000988142292"
+          "Quality": "0.001038421599"
         }
       ],
       "ResponseHeaders": [
@@ -4881,15 +5343,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1011"
+          "Value": "962"
         },
         {
           "Name": "ETag",
-          "Value": "\"gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs=\""
+          "Value": "\"F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4909,13 +5371,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI=\""
+          "Value": "W/\"96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI="
+          "Value": "sha256-96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk="
         }
       ]
     },
@@ -4930,7 +5392,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3304"
+          "Value": "3157"
         },
         {
           "Name": "Content-Type",
@@ -4938,11 +5400,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI=\""
+          "Value": "\"96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4952,13 +5414,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI="
+          "Value": "sha256-96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk="
         }
       ]
     },
     {
       "Route": "js/login.js.gz",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-q0xmjdusj3.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-tz0gqm4hdg.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -4967,7 +5429,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1011"
+          "Value": "962"
         },
         {
           "Name": "Content-Type",
@@ -4975,11 +5437,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs=\""
+          "Value": "\"F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -4997,18 +5459,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs="
+          "Value": "sha256-F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg="
         }
       ]
     },
     {
-      "Route": "js/login.q0xmjdusj3.js",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-q0xmjdusj3.gz",
+      "Route": "js/login.tz0gqm4hdg.js",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-tz0gqm4hdg.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000988142292"
+          "Quality": "0.001038421599"
         }
       ],
       "ResponseHeaders": [
@@ -5018,15 +5480,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1011"
+          "Value": "962"
         },
         {
           "Name": "ETag",
-          "Value": "\"gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs=\""
+          "Value": "\"F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5046,13 +5508,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI=\""
+          "Value": "W/\"96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "q0xmjdusj3"
+          "Value": "tz0gqm4hdg"
         },
         {
           "Name": "label",
@@ -5060,12 +5522,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI="
+          "Value": "sha256-96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk="
         }
       ]
     },
     {
-      "Route": "js/login.q0xmjdusj3.js",
+      "Route": "js/login.tz0gqm4hdg.js",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\js\\login.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -5075,7 +5537,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3304"
+          "Value": "3157"
         },
         {
           "Name": "Content-Type",
@@ -5083,11 +5545,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI=\""
+          "Value": "\"96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5097,7 +5559,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "q0xmjdusj3"
+          "Value": "tz0gqm4hdg"
         },
         {
           "Name": "label",
@@ -5105,13 +5567,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Vogso+zIC9mIcOx0yA+jvMdmb7qZgfBYSDXueHxsEVI="
+          "Value": "sha256-96SUIxHZUz3m7M6G3MR9srRhETkO6HyiuyQRKxY9hrk="
         }
       ]
     },
     {
-      "Route": "js/login.q0xmjdusj3.js.gz",
-      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-q0xmjdusj3.gz",
+      "Route": "js/login.tz0gqm4hdg.js.gz",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\obj\\Debug\\net9.0\\compressed\\60m42gp3md-tz0gqm4hdg.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -5120,7 +5582,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1011"
+          "Value": "962"
         },
         {
           "Name": "Content-Type",
@@ -5128,11 +5590,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs=\""
+          "Value": "\"F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 19 Jun 2025 18:24:06 GMT"
+          "Value": "Mon, 30 Jun 2025 14:13:29 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5150,7 +5612,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "q0xmjdusj3"
+          "Value": "tz0gqm4hdg"
         },
         {
           "Name": "label",
@@ -5158,7 +5620,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-gXWMonH8On5IUYVo66n0RNlFh2ICCnuHUq6v2DneIIs="
+          "Value": "sha256-F3+zWxBXUKb++W9TP+tzcuB9B50gUjFAlb0NHhnRGLg="
         }
       ]
     },
@@ -23447,7 +23909,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23500,7 +23962,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23537,7 +23999,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23584,7 +24046,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23637,7 +24099,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23674,7 +24136,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23721,7 +24183,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23782,7 +24244,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23827,7 +24289,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23882,7 +24344,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23943,7 +24405,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -23988,7 +24450,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 24 Jun 2025 14:51:14 GMT"
+          "Value": "Fri, 04 Jul 2025 23:51:48 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -24015,6 +24477,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-cma31SHfcbm69bkl/cjgkJsi7uVkvELCVGnKhA/zRKc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:22:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\01ed7408-fb7a-47d2-9b73-934b0323d589_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:22:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:33:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\0c33d589-a9c7-4334-b9dd-0097bb08fd0e_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:33:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
         }
       ]
     },
@@ -24101,6 +24727,334 @@
       ]
     },
     {
+      "Route": "uploads/1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:32:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\1373a721-1707-4aa8-85fc-426f9fc12f48_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:32:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12575"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hRS0JjoIokiLg8wFLB1iyL82Bop3NncaNEdbh78arQU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 13:24:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hRS0JjoIokiLg8wFLB1iyL82Bop3NncaNEdbh78arQU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).jervrd08p3.docx",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12575"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hRS0JjoIokiLg8wFLB1iyL82Bop3NncaNEdbh78arQU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 13:24:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "jervrd08p3"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/13fe9614-4aaf-4eba-adba-53b1fe621a5d_Dialogo Ingles (1).docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hRS0JjoIokiLg8wFLB1iyL82Bop3NncaNEdbh78arQU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:17:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\14fbfbe4-7cc0-47cf-a1a3-e3cbc1ee9fa3_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:17:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 23:05:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\258f2f1f-5169-4866-9ba7-d34060d03162_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 23:05:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/2c76167b-9750-42f5-aef2-ec198705514d_3.1.2 Planilla evaluación de proyectos (1).okdhtj9wv3.xlsx",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\2c76167b-9750-42f5-aef2-ec198705514d_3.1.2 Planilla evaluación de proyectos (1).xlsx",
       "Selectors": [],
@@ -24179,6 +25133,334 @@
         {
           "Name": "integrity",
           "Value": "sha256-CKgX6pkf5vrpmanT9E9HQwYIv2+Pkt2B1kSdQSprGKg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).crvjz8bv7x.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:03:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "crvjz8bv7x"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\32badfbb-fb87-434b-8001-585e194d3e9a_cotizacion-COT-1750117111713 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:03:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.3qtsovzwdj.png",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "179501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:05:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3qtsovzwdj"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\34f4ab45-f6f4-4718-9e95-2ca8027b2c78_Carta_Gantt_Felmart_Detallada.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "179501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:05:28 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:04:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\39b45217-4aa1-401c-a6f8-43461e4ea145_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:04:38 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:07:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\4677be84-c786-4b3f-9de9-e629b9a5391c_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:07:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
         }
       ]
     },
@@ -24429,6 +25711,88 @@
       ]
     },
     {
+      "Route": "uploads/67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:19:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\67bb59b5-b935-4e2b-b588-0047f392da8a_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:19:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/71b8a38d-8c13-47ab-aa69-b3e900e99421_cotizacion-COT-1750117196381 (12).cnvyv8jwq4.pdf",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\71b8a38d-8c13-47ab-aa69-b3e900e99421_cotizacion-COT-1750117196381 (12).pdf",
       "Selectors": [],
@@ -24507,6 +25871,252 @@
         {
           "Name": "integrity",
           "Value": "sha256-SFy3nukIZIb+2y2rrgGS1Grt6N756HXtG1E0HeB0rtI="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).2o8jnq2gsg.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68097"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xg6yCDfIg+nQZd5RVqK1X3j0sFtSjXj4dzQ4T1AUd6w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:04:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "2o8jnq2gsg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xg6yCDfIg+nQZd5RVqK1X3j0sFtSjXj4dzQ4T1AUd6w="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\8317b19c-a8c5-46d2-b3cb-ba118f4093ac_Cotizacion_COT-2024-001 (9).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "68097"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Xg6yCDfIg+nQZd5RVqK1X3j0sFtSjXj4dzQ4T1AUd6w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:04:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Xg6yCDfIg+nQZd5RVqK1X3j0sFtSjXj4dzQ4T1AUd6w="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:03:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\86ffb247-54d9-4179-ba02-5fa1c0b0c560_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:03:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.5eflhtuz0z.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22071"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LSaqi07RuB8CIVDldjfUIueFS0rCSQ0zhhAonulssEU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Jul 2025 00:32:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5eflhtuz0z"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LSaqi07RuB8CIVDldjfUIueFS0rCSQ0zhhAonulssEU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\87832644-4c4e-447c-9824-b18e8e0f4819_cotizacion-COT-2507-005.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22071"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LSaqi07RuB8CIVDldjfUIueFS0rCSQ0zhhAonulssEU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Jul 2025 00:32:30 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LSaqi07RuB8CIVDldjfUIueFS0rCSQ0zhhAonulssEU="
         }
       ]
     },
@@ -24593,6 +26203,170 @@
       ]
     },
     {
+      "Route": "uploads/aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).15slhvp529.docx",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "934835"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"td6C8rLKMpRtrWEdohxfoB7EPivyV6nIpMcf5wy6DKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 13:13:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "15slhvp529"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-td6C8rLKMpRtrWEdohxfoB7EPivyV6nIpMcf5wy6DKo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\aa15e7f6-c5d2-486d-b8de-9908b4fdc5af_PTY4478 APT2.0 FASE 2 Informe Final (2).docx",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "934835"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"td6C8rLKMpRtrWEdohxfoB7EPivyV6nIpMcf5wy6DKo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 13:13:07 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-td6C8rLKMpRtrWEdohxfoB7EPivyV6nIpMcf5wy6DKo="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.3qtsovzwdj.png",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "179501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Jun 2025 23:45:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3qtsovzwdj"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\afbc984d-08b3-4d00-8468-cd7d41d3ad43_Carta_Gantt_Felmart_Detallada.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "179501"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 28 Jun 2025 23:45:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-e6lFSi0cz9dvTKVEJx2xaHNOUYsqy0vPG/Dm2nOzQyw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/b2c4daef-386b-488d-9530-b65fc76c4353_Reporte_Completo_Equipos_2025-06-12 (1).xep681gvyx.xlsx",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\b2c4daef-386b-488d-9530-b65fc76c4353_Reporte_Completo_Equipos_2025-06-12 (1).xlsx",
       "Selectors": [],
@@ -24671,6 +26445,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-KTLtjUCjPoMdvgw9eFpFiZ1LoIZ+Qilz37SthMFUSdA="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).crvjz8bv7x.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:40:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "crvjz8bv7x"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\b8e9e4bd-d1fe-4b89-b40f-ccc1ec8cb7d7_cotizacion-COT-1750117111713 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 30 Jun 2025 14:40:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-iLq+8775IoNg2M2YnyQJgEX2FnVp1M1vvw8Xua/OEu4="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 21:56:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\c6efacbd-bd67-446b-bc15-f00fc9d6c076_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 21:56:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
         }
       ]
     },
@@ -24757,6 +26695,88 @@
       ]
     },
     {
+      "Route": "uploads/d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.fsb78ds0v2.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:22:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fsb78ds0v2"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\d5ef19d7-7db0-4221-ab17-f31d19d77fdc_cotizacion-COT-1751057366277.pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:22:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kawWo2xmdQqM3KSMv9xlPxb3B8MiUpFch1qho/BriTc="
+        }
+      ]
+    },
+    {
       "Route": "uploads/de76c35d-fe2c-4d68-a5a7-58f29f9493a9_Cotizacion_COT-2024-001 (7).pdf",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\de76c35d-fe2c-4d68-a5a7-58f29f9493a9_Cotizacion_COT-2024-001 (7).pdf",
       "Selectors": [],
@@ -24839,6 +26859,88 @@
       ]
     },
     {
+      "Route": "uploads/e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\e49dd484-a0fb-40c0-9980-e8b47d387a94_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:20:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
       "Route": "uploads/e8f3718d-9928-4141-b0f2-b7744235528a_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
       "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\e8f3718d-9928-4141-b0f2-b7744235528a_cotizacion-COT-1751057366277 (1).pdf",
       "Selectors": [],
@@ -24907,6 +27009,170 @@
         {
           "Name": "Last-Modified",
           "Value": "Sat, 28 Jun 2025 17:28:02 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:32:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\ed72f828-2176-4e96-a69c-bf0ca378ef7f_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:32:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).dgen0ofry7.pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:49:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dgen0ofry7"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf",
+      "AssetFile": "C:\\SistemaRendicionesPrimar\\SistemaRendicionesPrimar\\RendicionesPrimar\\wwwroot\\uploads\\fd2d7707-ef16-4e4b-9118-4b392418e671_cotizacion-COT-1751057366277 (1).pdf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22034"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/pdf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7bjQgnoxNrBT+1wuH0fn62inXfUaOzmp9j6evufNexw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 29 Jun 2025 22:49:26 GMT"
         },
         {
           "Name": "Cache-Control",

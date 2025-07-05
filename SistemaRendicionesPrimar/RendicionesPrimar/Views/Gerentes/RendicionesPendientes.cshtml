@@ -1,5 +1,49 @@
+@model IEnumerable<RendicionesPrimar.Models.Rendicion>
 @{
     ViewData["Title"] = "Rendiciones Pendientes";
 }
 <h2>Rendiciones Pendientes</h2>
-<p>Página en construcción.</p> 
+@if (!Model.Any())
+{
+    <div class="empty-notifications" style="background: var(--primar-white); border-radius: 12px; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07); padding: 80px 40px; text-align: center; border: 2px dashed #cbd5e1; margin-top: 32px;">
+        <div class="empty-icon" style="font-size: 4rem; color: #64748b; margin-bottom: 24px;">
+            <i class="fas fa-folder-open"></i>
+        </div>
+        <div class="empty-title" style="font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">No hay rendiciones pendientes</div>
+        <div class="empty-description" style="color: #64748b; font-size: 1rem; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+            No hay rendiciones pendientes de aprobación final en este momento.<br>¡Disfruta tu día!
+        </div>
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover" style="border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-top:32px;">
+        <thead style="background:#2563eb;color:#fff;font-size:1.05rem;">
+            <tr>
+                <th style="padding:14px 10px;">N° Ticket</th>
+                <th style="padding:14px 10px;">Título</th>
+                <th style="padding:14px 10px;">Empleado</th>
+                <th style="padding:14px 10px;">Monto Total</th>
+                <th style="padding:14px 10px;">Fecha Creación</th>
+                <th style="padding:14px 10px;">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model)
+        {
+            <tr style="transition:background 0.2s;">
+                <td style="font-weight:600;">@r.NumeroTicket</td>
+                <td>@r.Titulo</td>
+                <td>@(r.Usuario?.Nombre + " " + r.Usuario?.Apellidos)</td>
+                <td style="font-weight:600;color:#2563eb;">$@r.MontoTotal.ToString("N0")</td>
+                <td>@r.FechaCreacion.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a asp-action="Detalle" asp-controller="Rendiciones" asp-route-id="@r.Id" class="btn btn-primary btn-sm" style="font-weight:600;letter-spacing:0.5px;padding:7px 18px;border-radius:8px;">
+                        <i class="fas fa-eye"></i> Ver Detalle
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+} 

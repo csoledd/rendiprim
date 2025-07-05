@@ -13,6 +13,7 @@ namespace RendicionesPrimar.Data
         public DbSet<Rendicion> Rendiciones { get; set; }
         public DbSet<ArchivoAdjunto> ArchivosAdjuntos { get; set; }
         public DbSet<Notificacion> Notificaciones { get; set; }
+        public DbSet<AprobadorSimple> Aprobadores { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +24,7 @@ namespace RendicionesPrimar.Data
             modelBuilder.Entity<Rendicion>().ToTable("rendiciones");
             modelBuilder.Entity<ArchivoAdjunto>().ToTable("archivos_adjuntos");
             modelBuilder.Entity<Notificacion>().ToTable("notificaciones");
+            modelBuilder.Entity<AprobadorSimple>().ToTable("aprobadores");
             
             // Configurar relaciones
             modelBuilder.Entity<Rendicion>()
@@ -48,7 +50,7 @@ namespace RendicionesPrimar.Data
             {
                 entity.Property(e => e.Id).HasColumnName("id");
                 entity.Property(e => e.Nombre).HasColumnName("nombre").HasMaxLength(100);
-                entity.Property(e => e.NombreCompleto).HasColumnName("nombre_completo").HasMaxLength(100);
+                entity.Property(e => e.Apellidos).HasColumnName("apellidos").HasMaxLength(100);
                 entity.Property(e => e.Rut).HasColumnName("rut").HasMaxLength(20);
                 entity.Property(e => e.Email).HasColumnName("email").HasMaxLength(100);
                 entity.Property(e => e.Telefono).HasColumnName("telefono").HasMaxLength(20);
@@ -67,6 +69,8 @@ namespace RendicionesPrimar.Data
                 entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
                 entity.Property(e => e.Titulo).HasColumnName("titulo").HasMaxLength(200);
                 entity.Property(e => e.Descripcion).HasColumnName("descripcion");
+                entity.Property(e => e.Nombre).HasColumnName("nombre").HasMaxLength(100);
+                entity.Property(e => e.Apellidos).HasColumnName("apellidos").HasMaxLength(100);
                 entity.Property(e => e.MontoTotal).HasColumnName("monto_total").HasColumnType("decimal(10,2)");
                 entity.Property(e => e.Estado).HasColumnName("estado").HasMaxLength(20);
                 entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
@@ -78,7 +82,6 @@ namespace RendicionesPrimar.Data
                 entity.Property(e => e.ComentariosAprobador).HasColumnName("comentarios_aprobador");
                 entity.Property(e => e.AprobadoPor1).HasColumnName("aprobado_por_1");
                 entity.Property(e => e.AprobadoPor2).HasColumnName("aprobado_por_2");
-                entity.Property(e => e.NombreCompleto).HasColumnName("nombre_completo").HasMaxLength(100);
                 entity.Property(e => e.Rut).HasColumnName("rut").HasMaxLength(20);
                 entity.Property(e => e.Telefono).HasColumnName("telefono").HasMaxLength(20);
                 entity.Property(e => e.Cargo).HasColumnName("cargo").HasMaxLength(100);
@@ -105,6 +108,22 @@ namespace RendicionesPrimar.Data
                 entity.Property(e => e.Leido).HasColumnName("leido");
                 entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
                 entity.Property(e => e.TipoRol).HasColumnName("tipo_rol").HasMaxLength(20);
+            });
+            
+            modelBuilder.Entity<AprobadorSimple>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("id");
+                entity.Property(e => e.Nombre).HasColumnName("nombre").HasMaxLength(100);
+                entity.Property(e => e.Apellidos).HasColumnName("apellidos").HasMaxLength(100);
+                entity.Property(e => e.Rut).HasColumnName("rut").HasMaxLength(20);
+                entity.Property(e => e.Email).HasColumnName("email").HasMaxLength(100);
+                entity.Property(e => e.Telefono).HasColumnName("telefono").HasMaxLength(20);
+                entity.Property(e => e.PasswordHash).HasColumnName("password_hash").HasMaxLength(255);
+                entity.Property(e => e.Rol).HasColumnName("rol").HasMaxLength(20);
+                entity.Property(e => e.Cargo).HasColumnName("cargo").HasMaxLength(100);
+                entity.Property(e => e.Departamento).HasColumnName("departamento").HasMaxLength(100);
+                entity.Property(e => e.Activo).HasColumnName("activo");
+                entity.Property(e => e.FechaCreacion).HasColumnName("fecha_creacion");
             });
         }
     }

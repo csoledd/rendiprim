@@ -29,25 +29,31 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.SlidingExpiration = true;
         options.Cookie.HttpOnly = true;
         options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+        options.Cookie.SameSite = SameSiteMode.Lax;
     });
 
 // Add authorization
 builder.Services.AddAuthorization();
 
+// SignalR y servicios relacionados
+builder.Services.AddSignalR();
+builder.Services.AddScoped<RendicionesPrimar.Services.RendicionService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseHttpsRedirection();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
 }
 else
 {
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+app.UseHsts();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -66,12 +72,15 @@ app.Use(async (context, next) =>
     await next();
 });
 
-// SOLO RUTA POR DEFECTO
+// AGREGAR MAPEO DE CONTROLADORES CON ATRIBUTOS
+app.MapControllers();
+
+// RUTA POR DEFECTO
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Fallback route for authentication
-app.MapFallbackToController("Login", "Account");
+// Mapear el hub de notificaciones SignalR
+app.MapHub<NotificacionesHub>("/notificacionesHub");
 
 app.Run();

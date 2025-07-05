@@ -30,23 +30,23 @@
             <nav class="nav">
                 <a href="@Url.Action("Dashboard", "Gerentes")" class="nav-link active">
                     <i class="fas fa-home"></i>
-                    Panel Ejecutivo
+                    MI Panel
                 </a>
                 <a href="@Url.Action("RendicionesPendientes", "Gerentes")" class="nav-link">
-                    <i class="fas fa-clock"></i>
-                    Pendientes de Aprobación Final
+                    <i class="fas fa-tasks"></i>
+                    Rendiciones
                 </a>
                 <a href="@Url.Action("Notificaciones", "Gerentes")" class="nav-link">
                     <i class="fas fa-bell"></i>
-                    Notificaciones
+                    Notificación
                     @if (ViewBag.NotificacionesNoLeidas != null && ViewBag.NotificacionesNoLeidas > 0)
                     {
                         <span class="badge">@ViewBag.NotificacionesNoLeidas</span>
                     }
                 </a>
-                <a href="@Url.Action("AnalisisFinanciero", "Gerentes")" class="nav-link">
-                    <i class="fas fa-chart-line"></i>
-                    Análisis Financiero
+                <a href="@Url.Action("AyudaGerente", "Home")" class="nav-link">
+                    <i class="fas fa-question-circle"></i>
+                    Ayuda
                 </a>
                 <a href="@Url.Action("Perfil", "Gerentes")" class="nav-link">
                     <i class="fas fa-user"></i>
@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <!-- KPIs principales -->
+            <!-- KPIs importantes -->
             <div class="kpi-grid">
                 <div class="kpi-card primary">
                     <div class="kpi-header">
@@ -98,11 +98,36 @@
                     <div class="kpi-value">@(Model?.RendicionesPendientes ?? 0)</div>
                     <div class="kpi-trend urgent">
                         <i class="fas fa-exclamation-triangle"></i>
-                        Requieren tu firma
+                        Requieren tu aprobación
                     </div>
                 </div>
-
+                <div class="kpi-card info">
+                    <div class="kpi-header">
+                        <div class="kpi-title">TOTAL<br>RENDICIONES</div>
+                        <div class="kpi-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">@(Model?.TotalRendiciones ?? 0)</div>
+                    <div class="kpi-trend neutral">
+                        <i class="fas fa-minus"></i>
+                        Acumuladas
+                    </div>
+                </div>
                 <div class="kpi-card success">
+                    <div class="kpi-header">
+                        <div class="kpi-title">RENDICIONES<br>APROBADAS</div>
+                        <div class="kpi-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="kpi-value">@(Model?.RendicionesAprobadas ?? 0)</div>
+                    <div class="kpi-trend positive">
+                        <i class="fas fa-arrow-up"></i>
+                        Aprobadas
+                    </div>
+                </div>
+                <div class="kpi-card warning">
                     <div class="kpi-header">
                         <div class="kpi-title">MONTO TOTAL<br>PENDIENTE</div>
                         <div class="kpi-icon">
@@ -115,67 +140,9 @@
                         Por autorizar
                     </div>
                 </div>
-
-                <div class="kpi-card warning">
-                    <div class="kpi-header">
-                        <div class="kpi-title">TIEMPO PROMEDIO<br>ESPERA</div>
-                        <div class="kpi-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                    </div>
-                    <div class="kpi-value">1.2d</div>
-                    <div class="kpi-trend positive">
-                        <i class="fas fa-arrow-down"></i>
-                        -20% vs mes anterior
-                    </div>
-                </div>
-
-                <div class="kpi-card info">
-                    <div class="kpi-header">
-                        <div class="kpi-title">RENDICIONES<br>PROCESADAS HOY</div>
-                        <div class="kpi-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                    </div>
-                    <div class="kpi-value">@(Model?.RendicionesAprobadas ?? 0)</div>
-                    <div class="kpi-trend positive">
-                        <i class="fas fa-arrow-up"></i>
-                        +12% vs ayer
-                    </div>
-                </div>
             </div>
 
-            <!-- Dashboard de gráficos -->
-            <div class="charts-section">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-pie"></i> Estado de Aprobaciones</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="statusChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-line"></i> Aprobaciones por Día</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="approvalChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-bar"></i> Montos por Departamento</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="departmentChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Acciones rápidas -->
+            <!-- Acciones Rápidas -->
             <div class="actions-section">
                 <h3><i class="fas fa-bolt"></i> Acciones Rápidas</h3>
                 <div class="actions-grid">
@@ -187,29 +154,19 @@
                         </div>
                         <i class="fas fa-chevron-right"></i>
                     </a>
-
-                    @{
-                        var userRole = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "empleado";
-                        var userEmail = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "";
-                        var isCamila = userRole == "aprobador1" && userEmail == "camila.flores@primar.cl";
-                    }
-                    @if (isCamila)
-                    {
-                        <a href="@Url.Action("Index", "Admin")" class="action-card">
-                            <i class="fas fa-users-cog"></i>
-                            <div>
-                                <h4>Gestión de Usuarios</h4>
-                                <p>Administrar usuarios del sistema</p>
-                            </div>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    }
-
-                    <a href="@Url.Action("AnalisisFinanciero", "Gerentes")" class="action-card">
-                        <i class="fas fa-cog"></i>
+                    <a href="@Url.Action("Notificaciones", "Gerentes")" class="action-card info">
+                        <i class="fas fa-bell"></i>
                         <div>
-                            <h4>Análisis Financiero</h4>
-                            <p>Gestionar parámetros del sistema</p>
+                            <h4>Ver Notificaciones</h4>
+                            <p>Consulta tus notificaciones recientes</p>
+                        </div>
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="@Url.Action("Ayuda", "Home")" class="action-card warning">
+                        <i class="fas fa-question-circle"></i>
+                        <div>
+                            <h4>Ayuda</h4>
+                            <p>Centro de ayuda para gerentes</p>
                         </div>
                         <i class="fas fa-chevron-right"></i>
                     </a>
@@ -222,17 +179,20 @@
                 <div class="activity-section">
                     <h3><i class="fas fa-history"></i> Actividad Reciente</h3>
                     <div class="activity-list">
-                        @foreach (var actividad in Model.UltimasRendiciones)
+                        @foreach (var rendicion in Model.UltimasRendiciones)
                         {
-                            <div class="activity-item">
-                                <div class="activity-icon">
+                            <a href="@Url.Action("Detalle", "Rendiciones", new { id = rendicion.Id })" class="activity-item" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;padding:18px 24px;border-bottom:1px solid #e2e8f0;background:#fff;transition:background 0.2s;">
+                                <div class="activity-icon" style="width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#1e293b;font-size:1.3rem;border:1.5px solid #2563eb;">
                                     <i class="fas fa-file-invoice-dollar"></i>
                                 </div>
-                                <div class="activity-content">
-                                    <p>@actividad</p>
-                                    <span>Hace 2 horas</span>
+                                <div class="activity-content" style="flex:1;">
+                                    <strong>Rendición #@rendicion.Id: @rendicion.Titulo</strong>
+                                    <span class="status-badge @rendicion.Estado.ToLower()" style="font-size:1.1em;font-weight:600;">@rendicion.EstadoLegible</span>
                                 </div>
-                            </div>
+                                <div class="activity-time" style="font-size:0.9rem;color:#64748b;min-width:110px;text-align:right;">
+                                    @rendicion.FechaCreacion.ToString("dd-MM-yyyy HH:mm")
+                                </div>
+                            </a>
                         }
                     </div>
                 </div>

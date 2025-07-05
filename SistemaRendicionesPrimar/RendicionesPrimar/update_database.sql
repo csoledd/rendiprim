@@ -21,4 +21,7 @@ departamento = NULL
 WHERE nombre_completo = '' OR rut = '';
 
 -- Verificar que las columnas se agregaron correctamente
-DESCRIBE usuarios; 
+DESCRIBE usuarios;
+
+-- Renombrar la columna nombre_completo a apellidos
+ALTER TABLE usuarios CHANGE nombre_completo apellidos VARCHAR(100) NOT NULL DEFAULT ''; 

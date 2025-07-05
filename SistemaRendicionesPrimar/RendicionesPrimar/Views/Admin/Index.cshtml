@@ -65,7 +65,7 @@
                 @foreach (var usuario in Model)
                 {
                     <tr class="user-row" 
-                        data-name="@usuario.Nombre @usuario.NombreCompleto" 
+                        data-name="@usuario.Nombre @usuario.Apellidos" 
                         data-email="@usuario.Email" 
                         data-role="@usuario.Rol" 
                         data-status="@usuario.Activo.ToString().ToLower()"
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="user-info">
                                     <div class="name-primary">@usuario.Nombre</div>
-                                    <div class="name-secondary">@usuario.NombreCompleto</div>
+                                    <div class="name-secondary">@usuario.Apellidos</div>
                                 </div>
                             </div>
                         </td>

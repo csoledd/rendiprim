@@ -5,6 +5,7 @@ using RendicionesPrimar.Data;
 using RendicionesPrimar.Models;
 using RendicionesPrimar.Models.ViewModels;
 using System.Security.Claims;
+using RendicionesPrimar.Services;
 
 namespace RendicionesPrimar.Controllers
 {
@@ -12,19 +13,25 @@ namespace RendicionesPrimar.Controllers
     public class SupervisoresController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly RendicionService _rendicionService;
 
-        public SupervisoresController(ApplicationDbContext context)
+        public SupervisoresController(ApplicationDbContext context, RendicionService rendicionService)
         {
             _context = context;
+            _rendicionService = rendicionService;
         }
 
         public async Task<IActionResult> Dashboard()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "aprobador1";
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "aprobador1";
 
-            // Obtener el usuario completo con su nombre
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
+            // Obtener el usuario completo con su nombre usando SQL directo
+            var aprobador = await _context.Aprobadores
+                .FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId)
+                .FirstOrDefaultAsync();
+            var nombreUsuario = aprobador != null && !string.IsNullOrWhiteSpace(aprobador.Nombre) ? aprobador.Nombre : "Usuario";
+            ViewBag.UserName = nombreUsuario;
 
             // Contar notificaciones no leídas específicas de supervisores
             var notificacionesNoLeidas = await _context.Notificaciones
@@ -33,7 +40,6 @@ namespace RendicionesPrimar.Controllers
 
             ViewBag.NotificacionesNoLeidas = notificacionesNoLeidas;
             ViewBag.UserRole = userRole;
-            ViewBag.UserName = nombreUsuario;
 
             // Crear el modelo de dashboard para supervisor
             var modelo = new DashboardViewModel
@@ -61,16 +67,19 @@ namespace RendicionesPrimar.Controllers
                 .Take(5)
                 .ToListAsync();
 
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} de {r.Usuario?.Nombre} - {r.Estado}").ToList();
+            modelo.UltimasRendiciones = ultimasRendiciones;
 
             return View("Dashboard", modelo);
         }
 
         public async Task<IActionResult> RendicionesPendientes()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "aprobador1";
+            var aprobador = await _context.Aprobadores
+                .FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId)
+                .FirstOrDefaultAsync();
+            var nombreUsuario = aprobador != null && !string.IsNullOrWhiteSpace(aprobador.Nombre) ? aprobador.Nombre : "Usuario";
             ViewBag.UserName = nombreUsuario;
 
             var rendiciones = await _context.Rendiciones
@@ -84,8 +93,13 @@ namespace RendicionesPrimar.Controllers
 
         public async Task<IActionResult> Notificaciones()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "aprobador1";
+            var aprobador = await _context.Aprobadores
+                .FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId)
+                .FirstOrDefaultAsync();
+            var nombreUsuario = aprobador != null && !string.IsNullOrWhiteSpace(aprobador.Nombre) ? aprobador.Nombre : "Usuario";
+            ViewBag.UserName = nombreUsuario;
 
             // Obtener solo notificaciones específicas de supervisores
             var notificaciones = await _context.Notificaciones
@@ -95,7 +109,6 @@ namespace RendicionesPrimar.Controllers
                 .ToListAsync();
 
             ViewBag.NotificacionesNoLeidas = notificaciones.Count(n => !n.Leido);
-            ViewBag.UserName = nombreUsuario;
 
             return View("Notificaciones", notificaciones);
         }
@@ -115,7 +128,7 @@ namespace RendicionesPrimar.Controllers
         [HttpPost]
         public async Task<IActionResult> MarcarNotificacionLeida(int id)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
             
             var notificacion = await _context.Notificaciones
                 .FirstOrDefaultAsync(n => n.Id == id && n.UsuarioId == userId && n.TipoRol == "supervisor");
@@ -129,45 +142,64 @@ namespace RendicionesPrimar.Controllers
             return Json(new { success = true });
         }
 
+        // MÉTODOS PERFIL SIN ATRIBUTOS DE RUTA
+        [AllowAnonymous]
         [HttpGet]
-        [Route("Supervisores/Perfil")]
-        public async Task<IActionResult> Perfil()
+        [Route("/perfil-supervisor")]
+        public async Task<IActionResult> PerfilFijo()
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario == null)
-                return NotFound();
+            var aprobador = await _context.Aprobadores.FindAsync(userId);
+            if (aprobador == null)
+                return Content("Aprobador no encontrado");
             var viewModel = new InformacionPersonalViewModel
             {
-                NombreCompleto = usuario.NombreCompleto,
-                Rut = usuario.Rut,
-                Email = usuario.Email,
-                Telefono = usuario.Telefono,
-                Cargo = usuario.Cargo,
-                Departamento = usuario.Departamento
+                Nombre = aprobador.Nombre,
+                Apellidos = aprobador.Apellidos,
+                Rut = aprobador.Rut,
+                Email = aprobador.Email,
+                Cargo = aprobador.Cargo,
+                Departamento = aprobador.Departamento,
+                Telefono = aprobador.Telefono
             };
-            return View(viewModel);
+            return View("Perfil", viewModel);
         }
 
+        [Authorize(Roles = "aprobador1")]
         [HttpPost]
-        [Route("Supervisores/Perfil")]
-        public async Task<IActionResult> Perfil(InformacionPersonalViewModel model)
+        [Route("/perfil-supervisor")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PerfilFijo(InformacionPersonalViewModel model)
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
             if (!ModelState.IsValid)
-                return View(model);
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario == null)
-                return NotFound();
-            usuario.NombreCompleto = model.NombreCompleto;
-            usuario.Rut = model.Rut;
-            usuario.Email = model.Email;
-            usuario.Telefono = model.Telefono;
-            usuario.Cargo = model.Cargo;
-            usuario.Departamento = model.Departamento;
+                return Content("Modelo inválido");
+
+            var aprobador = await _context.Aprobadores.FindAsync(userId);
+            if (aprobador == null)
+                return Content("Aprobador no encontrado");
+
+            // Solo actualiza los campos permitidos
+            aprobador.Nombre = model.Nombre;
+            aprobador.Apellidos = model.Apellidos;
+            aprobador.Rut = model.Rut;
+            aprobador.Email = model.Email;
+            aprobador.Telefono = model.Telefono;
+            aprobador.Cargo = model.Cargo;
+            aprobador.Departamento = model.Departamento;
+            // NO toques: password_hash, rol, activo, mfa, etc.
+
+            _context.Entry(aprobador).Property(x => x.Nombre).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Apellidos).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Rut).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Email).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Telefono).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Cargo).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Departamento).IsModified = true;
+
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Información personal actualizada exitosamente";
-            return RedirectToAction("Perfil");
+            TempData["SuccessMessage"] = "¡Cambios guardados!";
+            return RedirectToAction("PerfilFijo");
         }
 
         private async Task<string> ObtenerNombreUsuario(int userId)
@@ -175,5 +207,38 @@ namespace RendicionesPrimar.Controllers
             var usuario = await _context.Usuarios.FindAsync(userId);
             return usuario?.Nombre ?? "Usuario";
         }
+
+        public IActionResult Ayuda()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AprobarRendicion(int id, string? comentarios)
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var ok = await _rendicionService.AprobarPrimeraInstanciaAsync(id, userId, comentarios);
+            if (!ok)
+            {
+                TempData["ErrorMessage"] = "No se pudo aprobar la rendición";
+                return RedirectToAction("RendicionesPendientes");
+            }
+            TempData["SuccessMessage"] = "Rendición aprobada";
+            return RedirectToAction("RendicionesPendientes");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RechazarRendicion(int id, string? comentarios)
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var ok = await _rendicionService.RechazarAsync(id, comentarios ?? "Rechazada por el supervisor", userId);
+            if (!ok)
+            {
+                TempData["ErrorMessage"] = "No se pudo rechazar la rendición";
+                return RedirectToAction("RendicionesPendientes");
+            }
+            TempData["SuccessMessage"] = "Rendición rechazada";
+            return RedirectToAction("RendicionesPendientes");
+        }
     }
-} 
+}

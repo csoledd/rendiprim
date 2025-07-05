@@ -25,12 +25,12 @@ namespace RendicionesPrimar.Controllers
             var usuario = await _context.Usuarios.FindAsync(userId);
             if (usuario != null)
             {
-                return usuario.Nombre;
+                return usuario.Nombre + " " + usuario.Apellidos;
             }
 
             // Si no se encuentra en usuarios, buscar en aprobadores
             var aprobador = await _context.Set<Usuario>().FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId).FirstOrDefaultAsync();
-            return aprobador?.Nombre ?? "Usuario";
+            return aprobador?.Nombre + " " + aprobador?.Apellidos ?? "Usuario";
         }
 
         // Método para obtener los datos completos del usuario buscando en ambas tablas
@@ -61,7 +61,8 @@ namespace RendicionesPrimar.Controllers
 
             var viewModel = new InformacionPersonalViewModel
             {
-                NombreCompleto = usuario.NombreCompleto,
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
                 Rut = usuario.Rut,
                 Email = usuario.Email,
                 Telefono = usuario.Telefono,
@@ -85,7 +86,7 @@ namespace RendicionesPrimar.Controllers
             if (!ModelState.IsValid)
             {
                 var usuario = await _context.Usuarios.FindAsync(userId);
-                ViewBag.UserName = usuario?.Nombre ?? "Usuario";
+                ViewBag.UserName = usuario?.Nombre + " " + usuario?.Apellidos ?? "Usuario";
                 ViewBag.NotificacionesNoLeidas = await _context.Notificaciones
                     .Where(n => n.UsuarioId == userId && !n.Leido).CountAsync();
                 return View(model);
@@ -99,7 +100,8 @@ namespace RendicionesPrimar.Controllers
             }
 
             // Actualizar la información personal
-            user.NombreCompleto = model.NombreCompleto;
+            user.Nombre = model.Nombre;
+            user.Apellidos = model.Apellidos;
             user.Rut = model.Rut;
             user.Email = model.Email;
             user.Telefono = model.Telefono;

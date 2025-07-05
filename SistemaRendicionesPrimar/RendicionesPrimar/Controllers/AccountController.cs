@@ -562,5 +562,80 @@ namespace RendicionesPrimar.Controllers
                 throw;
             }
         }
+
+        [HttpGet]
+        public IActionResult CambiarContrasena()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CambiarContrasena(string contrasenaActual, string nuevaContrasena, string confirmarContrasena)
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userRol = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "";
+            object usuario = null;
+            string passwordHash = null;
+
+            if (userRol == "empleado")
+            {
+                usuario = await _context.Usuarios.FindAsync(userId);
+                passwordHash = (usuario as Usuario)?.PasswordHash;
+            }
+            else if (userRol == "aprobador1" || userRol == "aprobador2")
+            {
+                usuario = await _context.Aprobadores.FindAsync(userId);
+                passwordHash = (usuario as AprobadorSimple)?.PasswordHash;
+            }
+            else
+            {
+                ModelState.AddModelError("", "Rol de usuario no válido.");
+                return View();
+            }
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError("", "Usuario no encontrado.");
+                return View();
+            }
+
+            if (string.IsNullOrEmpty(contrasenaActual) || string.IsNullOrEmpty(nuevaContrasena) || string.IsNullOrEmpty(confirmarContrasena))
+            {
+                ModelState.AddModelError("", "Todos los campos son obligatorios.");
+                return View();
+            }
+
+            if (!VerifyPassword(contrasenaActual, passwordHash))
+            {
+                ModelState.AddModelError("", "La contraseña actual es incorrecta.");
+                return View();
+            }
+
+            if (nuevaContrasena != confirmarContrasena)
+            {
+                ModelState.AddModelError("", "Las contraseñas nuevas no coinciden.");
+                return View();
+            }
+
+            if (nuevaContrasena.Length < 6)
+            {
+                ModelState.AddModelError("", "La nueva contraseña debe tener al menos 6 caracteres.");
+                return View();
+            }
+
+            // Guardar nueva contraseña
+            if (userRol == "empleado")
+            {
+                (usuario as Usuario).PasswordHash = HashPassword(nuevaContrasena);
+            }
+            else
+            {
+                (usuario as AprobadorSimple).PasswordHash = HashPassword(nuevaContrasena);
+            }
+            await _context.SaveChangesAsync();
+            ViewBag.Success = "¡Contraseña cambiada exitosamente!";
+            return View();
+        }
     }
 }

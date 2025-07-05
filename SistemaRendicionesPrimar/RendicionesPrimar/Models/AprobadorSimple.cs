@@ -8,19 +8,19 @@ namespace RendicionesPrimar.Models
         [Column("id")]
         public int Id { get; set; }
         [Column("nombre")]
-        public string Nombre { get; set; } = string.Empty;
-        [Column("nombre_completo")]
-        public string NombreCompleto { get; set; } = string.Empty;
+        public string? Nombre { get; set; }
+        [Column("apellidos")]
+        public string? Apellidos { get; set; }
         [Column("rut")]
-        public string Rut { get; set; } = string.Empty;
+        public string? Rut { get; set; }
         [Column("email")]
-        public string Email { get; set; } = string.Empty;
+        public string? Email { get; set; }
         [Column("telefono")]
         public string? Telefono { get; set; }
         [Column("password_hash")]
-        public string PasswordHash { get; set; } = string.Empty;
+        public string? PasswordHash { get; set; }
         [Column("rol")]
-        public string Rol { get; set; } = string.Empty;
+        public string? Rol { get; set; }
         [Column("cargo")]
         public string? Cargo { get; set; }
         [Column("departamento")]

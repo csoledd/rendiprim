@@ -47,10 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showError('Por favor, ingrese un email válido');
             return;
         }
-
-        // Deshabilitar el botón y mostrar estado de carga
-        loginBtn.disabled = true;
-        loginBtn.textContent = 'Ingresando...';
     });
 
     // Función para mostrar errores

@@ -7,16 +7,13 @@ namespace RendicionesPrimar.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(20)]
-        public string NumeroTicket { get; set; } = string.Empty;
+        public string? NumeroTicket { get; set; }
 
-        [Required]
         public int UsuarioId { get; set; }
 
-        [Required]
         [StringLength(200)]
-        public string Titulo { get; set; } = string.Empty;
+        public string? Titulo { get; set; }
 
         [StringLength(1000)]
         public string? Descripcion { get; set; }
@@ -24,9 +21,8 @@ namespace RendicionesPrimar.Models
         [Column(TypeName = "decimal(18,2)")]
         public decimal MontoTotal { get; set; }
 
-        [Required]
         [StringLength(50)]
-        public string Estado { get; set; } = "pendiente";
+        public string? Estado { get; set; }
 
         public DateTime FechaCreacion { get; set; } = DateTime.Now;
 
@@ -47,13 +43,16 @@ namespace RendicionesPrimar.Models
         public int? AprobadoPor2 { get; set; }
 
         // Información personal del empleado al momento de la rendición
-        [Required]
         [StringLength(100)]
-        public string NombreCompleto { get; set; } = string.Empty;
+        [Column("nombre")]
+        public string? Nombre { get; set; }
 
-        [Required]
+        [StringLength(100)]
+        [Column("apellidos")]
+        public string? Apellidos { get; set; }
+
         [StringLength(20)]
-        public string Rut { get; set; } = string.Empty;
+        public string? Rut { get; set; }
 
         [StringLength(20)]
         public string? Telefono { get; set; }
@@ -76,5 +75,19 @@ namespace RendicionesPrimar.Models
 
         public virtual ICollection<ArchivoAdjunto> ArchivosAdjuntos { get; set; } = new List<ArchivoAdjunto>();
         public virtual ICollection<Notificacion> Notificaciones { get; set; } = new List<Notificacion>();
+
+        public string EstadoLegible {
+            get {
+                if (string.IsNullOrWhiteSpace(Estado)) return "Desconocido";
+                return Estado switch {
+                    "pendiente" => "Pendiente",
+                    "aprobado_1" => "Aceptada",
+                    "aprobado_2" => "Aceptada",
+                    "pagado" => "Aceptada",
+                    "rechazado" => "Rechazada",
+                    _ => "Desconocido"
+                };
+            }
+        }
     }
 }

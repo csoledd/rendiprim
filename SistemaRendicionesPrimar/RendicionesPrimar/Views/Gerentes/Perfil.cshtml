@@ -15,21 +15,27 @@
                 <div class="card-body">
                     @if (TempData["SuccessMessage"] != null)
                     {
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <i class="icon fas fa-check"></i>
-                            @TempData["SuccessMessage"]
-                        </div>
+                        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
                     }
-                    <form asp-action="Perfil" method="post">
+                    <form asp-action="PerfilFijo" method="post">
+                        @Html.AntiForgeryToken()
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="NombreCompleto" class="control-label"></label>
-                                    <input asp-for="NombreCompleto" class="form-control" />
-                                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                                    <label asp-for="Nombre" class="control-label"></label>
+                                    <input asp-for="Nombre" class="form-control" />
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Apellidos" class="control-label"></label>
+                                    <input asp-for="Apellidos" class="form-control" />
+                                    <span asp-validation-for="Apellidos" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Rut" class="control-label"></label>
@@ -37,8 +43,6 @@
                                     <span asp-validation-for="Rut" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Email" class="control-label"></label>
@@ -46,6 +50,8 @@
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Telefono" class="control-label"></label>
@@ -53,8 +59,6 @@
                                     <span asp-validation-for="Telefono" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Cargo" class="control-label"></label>
@@ -62,6 +66,8 @@
                                     <span asp-validation-for="Cargo" class="text-danger"></span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label asp-for="Departamento" class="control-label"></label>

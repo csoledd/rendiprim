@@ -9,7 +9,7 @@ namespace RendicionesPrimar.Models.ViewModels
         public decimal MontoTotal { get; set; }
         public string Estado { get; set; } = string.Empty;
         public DateTime FechaCreacion { get; set; }
-        public string NombreCompleto { get; set; } = string.Empty;
+        public string Apellidos { get; set; } = string.Empty;
         public string Rut { get; set; } = string.Empty;
         public string? Telefono { get; set; }
         public string? Cargo { get; set; }
@@ -25,5 +25,6 @@ namespace RendicionesPrimar.Models.ViewModels
         public bool CanEdit { get; set; }
         public string UserRole { get; set; } = string.Empty;
         public List<string> TimelineEvents { get; set; } = new List<string>();
+        public string Nombre { get; set; } = string.Empty;
     }
 }

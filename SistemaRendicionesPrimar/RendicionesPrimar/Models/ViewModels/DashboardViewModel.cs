@@ -9,16 +9,16 @@ namespace RendicionesPrimar.Models.ViewModels
         
         // Métricas principales
         public int TotalRendiciones { get; set; }
-        public int RendicionesPendientes { get; set; }
-        public int RendicionesAprobadas { get; set; }
+        public int? RendicionesPendientes { get; set; }
+        public int? RendicionesAprobadas { get; set; }
+        public int? RendicionesRechazadas { get; set; }
         public decimal MontoTotal { get; set; }
-        public int RendicionesRechazadas { get; set; }
         
         // Para empleados
         public List<string> EstadisticasEmpleado { get; set; } = new List<string>();
         
         // Para aprobadores
-        public List<string> UltimasRendiciones { get; set; } = new List<string>();
+        public List<Rendicion>? UltimasRendiciones { get; set; }
     }
 
     public class EstadisticaRendicion

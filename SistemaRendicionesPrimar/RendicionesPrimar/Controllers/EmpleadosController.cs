@@ -62,8 +62,7 @@ namespace RendicionesPrimar.Controllers
                 .Take(5)
                 .ToListAsync();
 
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} - {r.Titulo} ({r.Estado})").ToList();
+            modelo.UltimasRendiciones = ultimasRendiciones;
 
             return View("Dashboard", modelo);
         }
@@ -101,7 +100,6 @@ namespace RendicionesPrimar.Controllers
         }
 
         [HttpGet]
-        [Route("Empleados/Perfil")]
         public async Task<IActionResult> Perfil()
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
@@ -110,7 +108,8 @@ namespace RendicionesPrimar.Controllers
                 return NotFound();
             var viewModel = new InformacionPersonalViewModel
             {
-                NombreCompleto = usuario.NombreCompleto,
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
                 Rut = usuario.Rut,
                 Email = usuario.Email,
                 Telefono = usuario.Telefono,
@@ -121,24 +120,37 @@ namespace RendicionesPrimar.Controllers
         }
 
         [HttpPost]
-        [Route("Empleados/Perfil")]
         public async Task<IActionResult> Perfil(InformacionPersonalViewModel model)
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
             if (!ModelState.IsValid)
                 return View(model);
+
             var usuario = await _context.Usuarios.FindAsync(userId);
             if (usuario == null)
                 return NotFound();
-            usuario.NombreCompleto = model.NombreCompleto;
+
+            // Solo actualiza los campos permitidos
+            usuario.Nombre = model.Nombre;
+            usuario.Apellidos = model.Apellidos;
             usuario.Rut = model.Rut;
             usuario.Email = model.Email;
             usuario.Telefono = model.Telefono;
             usuario.Cargo = model.Cargo;
             usuario.Departamento = model.Departamento;
+            // NO toques: password_hash, rol, activo, mfa, etc.
+
+            _context.Entry(usuario).Property(x => x.Nombre).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Apellidos).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Rut).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Email).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Telefono).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Cargo).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Departamento).IsModified = true;
+
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Información personal actualizada exitosamente";
-            return RedirectToAction("Perfil");
+            TempData["SuccessMessage"] = "¡Cambios guardados!";
+            return RedirectToAction("PerfilFijo");
         }
 
         [HttpPost]
@@ -158,10 +170,70 @@ namespace RendicionesPrimar.Controllers
             return Json(new { success = true });
         }
 
+        [HttpGet]
+        [Route("/perfil-empleado")]
+        public async Task<IActionResult> PerfilFijo()
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            if (usuario == null)
+                return NotFound();
+            var viewModel = new InformacionPersonalViewModel
+            {
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
+                Rut = usuario.Rut,
+                Email = usuario.Email,
+                Telefono = usuario.Telefono,
+                Cargo = usuario.Cargo,
+                Departamento = usuario.Departamento
+            };
+            return View("Perfil", viewModel);
+        }
+
+        [Authorize(Roles = "empleado")]
+        [HttpPost]
+        [Route("/perfil-empleado")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PerfilFijo(InformacionPersonalViewModel model)
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (!ModelState.IsValid)
+                return Content("Modelo inválido");
+
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            if (usuario == null)
+                return Content("Usuario no encontrado");
+
+            // Solo actualiza los campos permitidos
+            usuario.Nombre = model.Nombre;
+            usuario.Apellidos = model.Apellidos;
+            usuario.Rut = model.Rut;
+            usuario.Email = model.Email;
+            usuario.Telefono = model.Telefono;
+            usuario.Cargo = model.Cargo;
+            usuario.Departamento = model.Departamento;
+            // NO toques: password_hash, rol, activo, mfa, etc.
+
+            _context.Entry(usuario).Property(x => x.Nombre).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Apellidos).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Rut).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Email).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Telefono).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Cargo).IsModified = true;
+            _context.Entry(usuario).Property(x => x.Departamento).IsModified = true;
+
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "¡Cambios guardados!";
+            return RedirectToAction("PerfilFijo");
+        }
+
         private async Task<string> ObtenerNombreUsuario(int userId)
         {
             var usuario = await _context.Usuarios.FindAsync(userId);
-            return usuario?.Nombre ?? "Usuario";
+            if (usuario != null)
+                return $"{usuario.Nombre} {usuario.Apellidos}".Trim();
+            return "Usuario";
         }
     }
-} 
+}

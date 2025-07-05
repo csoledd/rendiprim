@@ -11,10 +11,10 @@ namespace RendicionesPrimar.Models.ViewModels
         [Display(Name = "Nombre")]
         public string Nombre { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "El nombre completo es requerido")]
-        [StringLength(100, ErrorMessage = "El nombre completo no puede tener más de 100 caracteres")]
-        [Display(Name = "Nombre Completo")]
-        public string NombreCompleto { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Los apellidos son requeridos")]
+        [StringLength(100, ErrorMessage = "Los apellidos no pueden tener más de 100 caracteres")]
+        [Display(Name = "Apellidos")]
+        public string Apellidos { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El RUT es requerido")]
         [StringLength(20, ErrorMessage = "El RUT no puede tener más de 20 caracteres")]

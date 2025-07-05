@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Cambiar Contraseña";
+}
+<h2 style="font-size:2rem;font-weight:700;color:#1e293b;margin-bottom:32px;">Cambiar Contraseña</h2>
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div style="background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(37,99,235,0.07);padding:40px 32px 32px 32px;margin-bottom:32px;border:1.5px solid #e2e8f0;">
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success">@ViewBag.Success</div>
+            }
+            @if (!ViewData.ModelState.IsValid)
+            {
+                foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <div class="alert alert-danger">@error.ErrorMessage</div>
+                }
+            }
+            <form asp-action="CambiarContrasena" method="post" autocomplete="off">
+                @Html.AntiForgeryToken()
+                <div class="form-group" style="margin-bottom:24px;">
+                    <label for="contrasenaActual" style="font-weight:600;color:#1e293b;">Contraseña Actual</label>
+                    <input type="password" class="form-control" id="contrasenaActual" name="contrasenaActual" required style="border-radius:10px;padding:14px 16px;font-size:1.1rem;background:#f1f5f9;" />
+                </div>
+                <div class="form-group" style="margin-bottom:24px;">
+                    <label for="nuevaContrasena" style="font-weight:600;color:#1e293b;">Nueva Contraseña</label>
+                    <input type="password" class="form-control" id="nuevaContrasena" name="nuevaContrasena" required style="border-radius:10px;padding:14px 16px;font-size:1.1rem;background:#f1f5f9;" />
+                </div>
+                <div class="form-group" style="margin-bottom:32px;">
+                    <label for="confirmarContrasena" style="font-weight:600;color:#1e293b;">Confirmar Nueva Contraseña</label>
+                    <input type="password" class="form-control" id="confirmarContrasena" name="confirmarContrasena" required style="border-radius:10px;padding:14px 16px;font-size:1.1rem;background:#f1f5f9;" />
+                </div>
+                <div style="display:flex;gap:16px;align-items:center;">
+                    <button type="submit" class="btn btn-primary" style="font-size:1.1rem;padding:12px 32px;border-radius:10px;font-weight:600;">Cambiar Contraseña</button>
+                    <a asp-controller="Gerentes" asp-action="Perfil" class="btn btn-outline-secondary" style="font-size:1.1rem;padding:12px 32px;border-radius:10px;font-weight:600;border:2px solid #2563eb;color:#2563eb;background:#f8fafc;transition:all 0.2s;"
+                       onmouseover="this.style.background='#2563eb';this.style.color='white';" onmouseout="this.style.background='#f8fafc';this.style.color='#2563eb';">
+                        <i class="fas fa-arrow-left"></i> Volver a Mi Perfil
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

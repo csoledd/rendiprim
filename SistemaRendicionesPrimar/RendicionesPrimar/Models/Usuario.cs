@@ -7,33 +7,27 @@ namespace RendicionesPrimar.Models
     {
         public int Id { get; set; }
 
-        [Required]
         [StringLength(100)]
-        public string Nombre { get; set; } = string.Empty;
+        public string? Nombre { get; set; }
 
-        [Required]
         [StringLength(100)]
-        public string NombreCompleto { get; set; } = string.Empty;
+        public string? Apellidos { get; set; }
 
-        [Required]
         [StringLength(20)]
-        public string Rut { get; set; } = string.Empty;
+        public string? Rut { get; set; }
 
-        [Required]
         [EmailAddress]
         [StringLength(100)]
-        public string Email { get; set; } = string.Empty;
+        public string? Email { get; set; }
 
         [StringLength(20)]
         public string? Telefono { get; set; }
 
-        [Required]
         [StringLength(255)]
-        public string PasswordHash { get; set; } = string.Empty;
+        public string? PasswordHash { get; set; }
 
-        [Required]
         [StringLength(50)]
-        public string Rol { get; set; } = string.Empty;
+        public string? Rol { get; set; }
 
         [StringLength(100)]
         public string? Cargo { get; set; }

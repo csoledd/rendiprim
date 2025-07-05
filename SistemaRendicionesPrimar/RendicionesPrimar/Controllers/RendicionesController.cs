@@ -5,6 +5,7 @@ using RendicionesPrimar.Data;
 using RendicionesPrimar.Models;
 using RendicionesPrimar.Models.ViewModels;
 using System.Security.Claims;
+using RendicionesPrimar.Services;
 
 namespace RendicionesPrimar.Controllers
 {
@@ -13,51 +14,22 @@ namespace RendicionesPrimar.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _environment;
+        private readonly RendicionService _rendicionService;
 
-        public RendicionesController(ApplicationDbContext context, IWebHostEnvironment environment)
+        public RendicionesController(ApplicationDbContext context, IWebHostEnvironment environment, RendicionService rendicionService)
         {
             _context = context;
             _environment = environment;
-        }
-
-        // Método para obtener el nombre del usuario buscando en ambas tablas
-        private async Task<string> ObtenerNombreUsuario(int userId)
-        {
-            // Primero buscar en la tabla usuarios
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario != null)
-            {
-                return usuario.Nombre;
-            }
-
-            // Si no se encuentra en usuarios, buscar en aprobadores
-            var aprobador = await _context.Set<Usuario>().FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId).FirstOrDefaultAsync();
-            return aprobador?.Nombre ?? "Usuario";
-        }
-
-        // Método para obtener los datos completos del usuario buscando en ambas tablas
-        private async Task<Usuario?> ObtenerUsuarioCompleto(int userId)
-        {
-            // Primero buscar en la tabla usuarios
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario != null)
-            {
-                return usuario;
-            }
-
-            // Si no se encuentra en usuarios, buscar en aprobadores
-            var aprobador = await _context.Set<Usuario>().FromSqlRaw("SELECT * FROM aprobadores WHERE id = {0}", userId).FirstOrDefaultAsync();
-            return aprobador;
+            _rendicionService = rendicionService;
         }
 
         public async Task<IActionResult> Index()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
-
-            // Obtener el usuario para el nombre
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
-            ViewBag.UserName = nombreUsuario;
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            
+            ViewBag.UserName = usuario?.Nombre ?? "Usuario";
             await ActualizarNotificacionesNoLeidas(userId);
 
             IQueryable<Rendicion> query = _context.Rendiciones
@@ -91,8 +63,8 @@ namespace RendicionesPrimar.Controllers
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
 
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
-            ViewBag.UserName = nombreUsuario;
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            ViewBag.UserName = usuario?.Nombre ?? "Usuario";
             await ActualizarNotificacionesNoLeidas(userId);
 
             var rendicion = await _context.Rendiciones
@@ -128,7 +100,8 @@ namespace RendicionesPrimar.Controllers
                 MontoTotal = rendicion.MontoTotal,
                 Estado = rendicion.Estado,
                 FechaCreacion = rendicion.FechaCreacion,
-                NombreCompleto = rendicion.NombreCompleto,
+                Nombre = rendicion.Nombre,
+                Apellidos = rendicion.Apellidos,
                 Rut = rendicion.Rut,
                 Telefono = rendicion.Telefono,
                 Cargo = rendicion.Cargo,
@@ -150,85 +123,76 @@ namespace RendicionesPrimar.Controllers
         [HttpGet]
         public async Task<IActionResult> Crear()
         {
-            if (!User.IsInRole("empleado"))
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var usuario = await _context.Usuarios.FindAsync(userId);
+
+            if (usuario == null)
             {
-                return Forbid();
+                TempData["ErrorMessage"] = "Usuario no encontrado.";
+                return RedirectToAction("Index", "Home");
             }
 
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
-            ViewBag.UserName = nombreUsuario;
-            await ActualizarNotificacionesNoLeidas(userId);
+            // Verificar si el perfil está completo
+            if (string.IsNullOrWhiteSpace(usuario.Telefono) ||
+                string.IsNullOrWhiteSpace(usuario.Cargo) ||
+                string.IsNullOrWhiteSpace(usuario.Departamento))
+            {
+                TempData["ErrorMessage"] = "Por favor, completa tu información de perfil (Teléfono, Cargo, Departamento) antes de crear una rendición.";
+                // Asumiendo que el perfil del empleado se edita en Empleados/Perfil
+                return RedirectToAction("Perfil", "Empleados");
+            }
 
-            // Obtener datos del usuario para prellenar el formulario
-            var usuario = await ObtenerUsuarioCompleto(userId);
-
-            // Prellenar datos personales si existen
             var model = new CrearRendicionViewModel
             {
-                NombreCompleto = usuario?.NombreCompleto ?? string.Empty,
-                Rut = usuario?.Rut ?? string.Empty,
-                Telefono = usuario?.Telefono,
-                Cargo = usuario?.Cargo,
-                Departamento = usuario?.Departamento
+                Nombre = usuario.Nombre,
+                Apellidos = usuario.Apellidos,
+                Rut = usuario.Rut,
+                Telefono = usuario.Telefono,
+                Cargo = usuario.Cargo,
+                Departamento = usuario.Departamento
             };
+
+            ViewBag.UserName = usuario.Nombre;
             return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Crear(CrearRendicionViewModel model)
         {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var usuario = await _context.Usuarios.FindAsync(userId);
+
+            if (usuario == null)
+            {
+                ModelState.AddModelError("", "No se pudo verificar la identidad del usuario.");
+            }
+
             if (!ModelState.IsValid)
             {
-                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-                var nombreUsuario = await ObtenerNombreUsuario(userId);
-                ViewBag.UserName = nombreUsuario;
-                await ActualizarNotificacionesNoLeidas(userId);
-                return View(model);
-            }
-
-            try
-            {
-                var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-                var usuario = await ObtenerUsuarioCompleto(userId);
-
-                var rendicion = new Rendicion
+                // Repoblar datos de solo lectura si el modelo no es válido
+                var userForView = await _context.Usuarios.FindAsync(userId);
+                if (userForView != null)
                 {
-                    Titulo = model.Titulo,
-                    Descripcion = model.Descripcion,
-                    MontoTotal = model.MontoTotal,
-                    UsuarioId = userId,
-                    Estado = "pendiente",
-                    FechaCreacion = DateTime.Now,
-                    NumeroTicket = await GenerarNumeroTicket(),
-                    // Información personal
-                    NombreCompleto = model.NombreCompleto,
-                    Rut = model.Rut,
-                    Telefono = model.Telefono,
-                    Cargo = model.Cargo,
-                    Departamento = model.Departamento
-                };
-
-                _context.Rendiciones.Add(rendicion);
-                await _context.SaveChangesAsync();
-
-                // Procesar archivos adjuntos
-                if (model.Archivos != null && model.Archivos.Count > 0)
-                {
-                    await ProcesarArchivosAdjuntos(rendicion.Id, model.Archivos);
+                    model.Nombre = userForView.Nombre;
+                    model.Apellidos = userForView.Apellidos;
+                    model.Rut = userForView.Rut;
+                    model.Telefono = userForView.Telefono;
+                    model.Cargo = userForView.Cargo;
+                    model.Departamento = userForView.Departamento;
+                    ViewBag.UserName = userForView.Nombre;
                 }
-
-                // Crear notificación para el aprobador
-                await CrearNotificacionAprobacion(rendicion, usuario);
-
-                TempData["SuccessMessage"] = $"Rendición {rendicion.NumeroTicket} creada exitosamente";
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = $"Error al crear la rendición: {ex.Message}";
                 return View(model);
             }
+
+            var rendicion = await _rendicionService.CrearRendicionAsync(userId, model.Titulo, model.Descripcion, model.MontoTotal);
+
+            if (model.Archivos != null && model.Archivos.Count > 0)
+            {
+                await ProcesarArchivosAdjuntos(rendicion.Id, model.Archivos);
+            }
+
+            TempData["SuccessMessage"] = $"Rendición {rendicion.NumeroTicket} creada exitosamente";
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -270,46 +234,19 @@ namespace RendicionesPrimar.Controllers
         {
             try
             {
-                // Verificar que el usuario sea aprobador1
                 var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
                 if (userRole != "aprobador1")
                 {
                     TempData["ErrorMessage"] = "No tienes permisos para aprobar rendiciones";
                     return RedirectToAction("Detalle", new { id });
                 }
-
-                var rendicion = await _context.Rendiciones
-                    .Include(r => r.Usuario)
-                    .FirstOrDefaultAsync(r => r.Id == id);
-
-                if (rendicion == null)
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+                var ok = await _rendicionService.AprobarPrimeraInstanciaAsync(id, userId, comentarios);
+                if (!ok)
                 {
-                    TempData["ErrorMessage"] = "Rendición no encontrada";
-                    return RedirectToAction("Index");
-                }
-
-                if (rendicion.Estado != "pendiente")
-                {
-                    TempData["ErrorMessage"] = "La rendición no está en estado pendiente";
+                    TempData["ErrorMessage"] = "No se pudo aprobar la rendición";
                     return RedirectToAction("Detalle", new { id });
                 }
-
-                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-                
-                rendicion.Estado = "aprobado_1";
-                rendicion.FechaAprobacion1 = DateTime.Now;
-                rendicion.Aprobador1Id = userId;
-                
-                if (!string.IsNullOrEmpty(comentarios))
-                {
-                    rendicion.ComentariosAprobador = comentarios;
-                }
-
-                await _context.SaveChangesAsync();
-
-                // Notificar al segundo aprobador
-                await CrearNotificacionSegundaAprobacion(rendicion);
-
                 TempData["SuccessMessage"] = "Rendición aprobada en primera instancia";
                 return RedirectToAction("Detalle", new { id });
             }
@@ -325,47 +262,19 @@ namespace RendicionesPrimar.Controllers
         {
             try
             {
-                // Verificar que el usuario sea aprobador2
                 var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
                 if (userRole != "aprobador2")
                 {
                     TempData["ErrorMessage"] = "No tienes permisos para aprobar rendiciones";
                     return RedirectToAction("Detalle", new { id });
                 }
-
-                var rendicion = await _context.Rendiciones
-                    .Include(r => r.Usuario)
-                    .FirstOrDefaultAsync(r => r.Id == id);
-
-                if (rendicion == null)
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+                var ok = await _rendicionService.AprobarSegundaInstanciaAsync(id, userId, comentarios);
+                if (!ok)
                 {
-                    TempData["ErrorMessage"] = "Rendición no encontrada";
-                    return RedirectToAction("Index");
-                }
-
-                if (rendicion.Estado != "aprobado_1")
-                {
-                    TempData["ErrorMessage"] = "La rendición debe estar aprobada en primera instancia";
+                    TempData["ErrorMessage"] = "No se pudo aprobar la rendición";
                     return RedirectToAction("Detalle", new { id });
                 }
-
-                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-                
-                rendicion.Estado = "aprobado_2";
-                rendicion.FechaAprobacion2 = DateTime.Now;
-                rendicion.Aprobador2Id = userId;
-                
-                if (!string.IsNullOrEmpty(comentarios))
-                {
-                    var comentarioExistente = rendicion.ComentariosAprobador ?? "";
-                    rendicion.ComentariosAprobador = comentarioExistente + $"\nAprobación final: {comentarios}";
-                }
-
-                await _context.SaveChangesAsync();
-
-                // Notificar al primer aprobador para pago
-                await CrearNotificacionParaPago(rendicion);
-
                 TempData["SuccessMessage"] = "Rendición aprobada finalmente";
                 return RedirectToAction("Detalle", new { id });
             }
@@ -411,6 +320,7 @@ namespace RendicionesPrimar.Controllers
                 await _context.SaveChangesAsync();
 
                 // Notificar al empleado
+                await CrearNotificacionEmpleado(rendicion, $"Tu rendición {rendicion.NumeroTicket} ha sido marcada como pagada.");
                 await CrearNotificacionPagado(rendicion);
 
                 TempData["SuccessMessage"] = "Rendición marcada como pagada";
@@ -512,45 +422,44 @@ namespace RendicionesPrimar.Controllers
 
         private async Task CrearNotificacionAprobacion(Rendicion rendicion, Usuario? usuario)
         {
-            var aprobador = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Rol == "aprobador1");
+            var supervisores = await _context.Usuarios
+                .Where(a => a.Rol == "aprobador1")
+                .ToListAsync();
 
-            if (aprobador != null)
+            var nombreUsuario = usuario?.Nombre + " " + usuario?.Apellidos ?? "Usuario";
+            foreach (var supervisor in supervisores)
             {
-                var nombreUsuario = usuario?.Nombre ?? "Usuario";
                 var notificacion = new Notificacion
                 {
-                    UsuarioId = aprobador.Id,
+                    UsuarioId = supervisor.Id, // id de la tabla aprobadores
                     RendicionId = rendicion.Id,
                     Mensaje = $"Nueva rendición {rendicion.NumeroTicket} de {nombreUsuario} requiere aprobación.",
                     Leido = false,
                     FechaCreacion = DateTime.Now,
                     TipoRol = "supervisor"
                 };
-
                 _context.Notificaciones.Add(notificacion);
-                await _context.SaveChangesAsync();
             }
+            await _context.SaveChangesAsync();
         }
 
         private async Task CrearNotificacionSegundaAprobacion(Rendicion rendicion)
         {
-            var aprobador = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Rol == "aprobador2");
+            var gerente = await _context.Aprobadores
+                .FirstOrDefaultAsync(a => a.Rol == "aprobador2");
 
-            if (aprobador != null)
+            if (gerente != null)
             {
-                var nombreUsuario = rendicion.Usuario?.Nombre ?? "Usuario";
+                var nombreUsuario = rendicion.Usuario?.Nombre + " " + rendicion.Usuario?.Apellidos ?? "Usuario";
                 var notificacion = new Notificacion
                 {
-                    UsuarioId = aprobador.Id,
+                    UsuarioId = gerente.Id, // id de la tabla aprobadores
                     RendicionId = rendicion.Id,
                     Mensaje = $"Rendición {rendicion.NumeroTicket} de {nombreUsuario} requiere tu aprobación final.",
                     Leido = false,
                     FechaCreacion = DateTime.Now,
                     TipoRol = "gerente"
                 };
-
                 _context.Notificaciones.Add(notificacion);
                 await _context.SaveChangesAsync();
             }
@@ -558,21 +467,20 @@ namespace RendicionesPrimar.Controllers
 
         private async Task CrearNotificacionParaPago(Rendicion rendicion)
         {
-            var aprobador = await _context.Usuarios
-                .FirstOrDefaultAsync(u => u.Rol == "aprobador1");
+            var supervisor = await _context.Aprobadores
+                .FirstOrDefaultAsync(a => a.Rol == "aprobador1");
 
-            if (aprobador != null)
+            if (supervisor != null)
             {
                 var notificacion = new Notificacion
                 {
-                    UsuarioId = aprobador.Id,
+                    UsuarioId = supervisor.Id, // id de la tabla aprobadores
                     RendicionId = rendicion.Id,
                     Mensaje = $"Rendición {rendicion.NumeroTicket} aprobada finalmente. Proceder con el pago.",
                     Leido = false,
                     FechaCreacion = DateTime.Now,
                     TipoRol = "supervisor"
                 };
-
                 _context.Notificaciones.Add(notificacion);
                 await _context.SaveChangesAsync();
             }
@@ -594,37 +502,37 @@ namespace RendicionesPrimar.Controllers
             await _context.SaveChangesAsync();
         }
 
+        private async Task CrearNotificacionEmpleado(Rendicion rendicion, string mensaje)
+        {
+            var notificacion = new Notificacion
+            {
+                UsuarioId = rendicion.UsuarioId, // id del empleado (tabla usuarios)
+                RendicionId = rendicion.Id,
+                Mensaje = mensaje,
+                Leido = false,
+                FechaCreacion = DateTime.Now,
+                TipoRol = "empleado"
+            };
+            _context.Notificaciones.Add(notificacion);
+            await _context.SaveChangesAsync();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Rechazar1(int id, string? comentarios)
         {
-            var rendicion = await _context.Rendiciones
-                .Include(r => r.Usuario)
-                .FirstOrDefaultAsync(r => r.Id == id);
-
-            if (rendicion == null || rendicion.Estado != "pendiente")
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
+            if (userRole != "aprobador1")
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "No tienes permisos para rechazar rendiciones";
+                return RedirectToAction("Detalle", new { id });
             }
-
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            
-            rendicion.Estado = "rechazado";
-            rendicion.FechaAprobacion1 = DateTime.Now;
-            
-            if (!string.IsNullOrEmpty(comentarios))
+            var ok = await _rendicionService.RechazarAsync(id, comentarios ?? "Rechazada por el supervisor", userId);
+            if (!ok)
             {
-                rendicion.ComentariosAprobador = $"Rechazado en primera revisión: {comentarios}";
+                TempData["ErrorMessage"] = "No se pudo rechazar la rendición";
+                return RedirectToAction("Detalle", new { id });
             }
-            else
-            {
-                rendicion.ComentariosAprobador = "Rechazado en primera revisión";
-            }
-
-            await _context.SaveChangesAsync();
-
-            // Notificar al empleado que fue rechazado
-            await CrearNotificacionRechazo(rendicion, "primera revisión");
-
             TempData["SuccessMessage"] = "Rendición rechazada";
             return RedirectToAction("Detalle", new { id });
         }
@@ -632,95 +540,21 @@ namespace RendicionesPrimar.Controllers
         [HttpPost]
         public async Task<IActionResult> Rechazar2(int id, string? comentarios)
         {
-            try
+            var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
+            if (userRole != "aprobador2")
             {
-                // Verificar que el usuario sea aprobador2
-                var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
-                if (userRole != "aprobador2")
-                {
-                    TempData["ErrorMessage"] = "No tienes permisos para rechazar rendiciones";
-                    return RedirectToAction("Detalle", new { id });
-                }
-
-                // Validar que se proporcione un motivo
-                if (string.IsNullOrWhiteSpace(comentarios))
-                {
-                    TempData["ErrorMessage"] = "Debe proporcionar un motivo para el rechazo";
-                    return RedirectToAction("Detalle", new { id });
-                }
-
-                var rendicion = await _context.Rendiciones
-                    .Include(r => r.Usuario)
-                    .FirstOrDefaultAsync(r => r.Id == id);
-
-                if (rendicion == null)
-                {
-                    TempData["ErrorMessage"] = "Rendición no encontrada";
-                    return RedirectToAction("Index");
-                }
-
-                if (rendicion.Estado != "aprobado_1")
-                {
-                    TempData["ErrorMessage"] = "La rendición debe estar aprobada en primera instancia para poder rechazarla";
-                    return RedirectToAction("Detalle", new { id });
-                }
-
-                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-                
-                rendicion.Estado = "rechazado";
-                rendicion.FechaAprobacion2 = DateTime.Now;
-                rendicion.Aprobador2Id = userId;
-                
-                var comentarioExistente = rendicion.ComentariosAprobador ?? "";
-                rendicion.ComentariosAprobador = comentarioExistente + $"\n\n❌ RECHAZADO EN APROBACIÓN FINAL:\n{comentarios}";
-
-                await _context.SaveChangesAsync();
-
-                // Notificar al empleado que fue rechazado
-                await CrearNotificacionRechazo(rendicion, "aprobación final");
-
-                TempData["SuccessMessage"] = "Rendición rechazada exitosamente";
+                TempData["ErrorMessage"] = "No tienes permisos para rechazar rendiciones";
                 return RedirectToAction("Detalle", new { id });
             }
-            catch (Exception ex)
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var ok = await _rendicionService.RechazarAsync(id, comentarios ?? "Rechazada por el gerente", userId);
+            if (!ok)
             {
-                TempData["ErrorMessage"] = $"Error al rechazar la rendición: {ex.Message}";
+                TempData["ErrorMessage"] = "No se pudo rechazar la rendición";
                 return RedirectToAction("Detalle", new { id });
             }
-        }
-
-        private async Task CrearNotificacionRechazo(Rendicion rendicion, string etapaRechazo)
-        {
-            var mensaje = $"Su rendición {rendicion.NumeroTicket} ha sido rechazada en {etapaRechazo}.";
-            
-            // Si hay comentarios del aprobador, incluirlos en la notificación
-            if (!string.IsNullOrEmpty(rendicion.ComentariosAprobador))
-            {
-                var comentarios = rendicion.ComentariosAprobador;
-                if (comentarios.Contains("❌ RECHAZADO EN APROBACIÓN FINAL:"))
-                {
-                    var motivoRechazo = comentarios.Split("❌ RECHAZADO EN APROBACIÓN FINAL:").Last().Trim();
-                    mensaje += $"\n\nMotivo: {motivoRechazo}";
-                }
-                else if (comentarios.Contains("Rechazado en primera revisión:"))
-                {
-                    var motivoRechazo = comentarios.Split("Rechazado en primera revisión:").Last().Trim();
-                    mensaje += $"\n\nMotivo: {motivoRechazo}";
-                }
-            }
-
-            var notificacion = new Notificacion
-            {
-                UsuarioId = rendicion.UsuarioId,
-                RendicionId = rendicion.Id,
-                Mensaje = mensaje,
-                Leido = false,
-                FechaCreacion = DateTime.Now,
-                TipoRol = "empleado"
-            };
-
-            _context.Notificaciones.Add(notificacion);
-            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "Rendición rechazada";
+            return RedirectToAction("Detalle", new { id });
         }
 
         private async Task ActualizarNotificacionesNoLeidas(int userId)
@@ -735,64 +569,42 @@ namespace RendicionesPrimar.Controllers
         [HttpGet]
         public async Task<IActionResult> Editar(int id)
         {
-            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "empleado";
             var rendicion = await _context.Rendiciones.FindAsync(id);
-            if (rendicion == null)
-            {
-                return NotFound();
-            }
-            if (userRole != "empleado" || rendicion.UsuarioId != userId || rendicion.Estado != "pendiente")
-            {
-                TempData["ErrorMessage"] = "No tienes permisos para editar esta rendición.";
-                return RedirectToAction("Detalle", new { id });
-            }
+            if (rendicion == null) return NotFound();
+
             var model = new CrearRendicionViewModel
             {
                 Titulo = rendicion.Titulo,
-                Descripcion = rendicion.Descripcion ?? string.Empty,
-                MontoTotal = rendicion.MontoTotal,
-                NombreCompleto = rendicion.NombreCompleto,
-                Rut = rendicion.Rut,
-                Telefono = rendicion.Telefono,
-                Cargo = rendicion.Cargo,
-                Departamento = rendicion.Departamento
+                Descripcion = rendicion.Descripcion,
+                MontoTotal = rendicion.MontoTotal
             };
-            ViewBag.UserName = User.Identity?.Name ?? "Usuario";
-            return View("Crear", model);
+            
+            ViewBag.RendicionId = id;
+            return View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Editar(int id, CrearRendicionViewModel model)
         {
-            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var userRole = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "empleado";
-            var rendicion = await _context.Rendiciones.FindAsync(id);
-            if (rendicion == null)
-            {
-                return NotFound();
-            }
-            if (userRole != "empleado" || rendicion.UsuarioId != userId || rendicion.Estado != "pendiente")
-            {
-                TempData["ErrorMessage"] = "No tienes permisos para editar esta rendición.";
-                return RedirectToAction("Detalle", new { id });
-            }
+            if (id <= 0) return BadRequest();
+
             if (!ModelState.IsValid)
             {
-                ViewBag.UserName = User.Identity?.Name ?? "Usuario";
-                return View("Crear", model);
+                ViewBag.RendicionId = id;
+                return View(model);
             }
+
+            var rendicion = await _context.Rendiciones.FindAsync(id);
+            if (rendicion == null) return NotFound();
+
             rendicion.Titulo = model.Titulo;
             rendicion.Descripcion = model.Descripcion;
             rendicion.MontoTotal = model.MontoTotal;
-            rendicion.NombreCompleto = model.NombreCompleto;
-            rendicion.Rut = model.Rut;
-            rendicion.Telefono = model.Telefono;
-            rendicion.Cargo = model.Cargo;
-            rendicion.Departamento = model.Departamento;
+            
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Rendición editada exitosamente.";
-            return RedirectToAction("Detalle", new { id });
+            
+            TempData["SuccessMessage"] = "Rendición actualizada exitosamente.";
+            return RedirectToAction("Detalle", new { id = id });
         }
     }
 }

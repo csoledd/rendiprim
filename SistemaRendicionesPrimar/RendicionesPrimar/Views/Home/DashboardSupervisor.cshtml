@@ -17,47 +17,50 @@
 
 <div class="app-container">
     <!-- Header ejecutivo -->
-    <header class="header">
-        <div class="header-content">
-            <div class="brand">
-                <i class="fas fa-building"></i>
+    <header class="header" style="background: var(--primar-primary); box-shadow: var(--primar-shadow); position: sticky; top: 0; z-index: 1000;">
+        <div class="header-content" style="max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; height: 60px;">
+            <div class="brand" style="display: flex; align-items: center; color: white; gap: 12px;">
+                <i class="fas fa-building" style="font-size: 1.5rem;"></i>
                 <div class="brand-text">
-                    <h1>Primar S.A.</h1>
-                    <span>Sistema de Rendiciones</span>
+                    <h1 style="font-size: 1.25rem; font-weight: 700; margin: 0; line-height: 1.2;">Primar S.A.</h1>
+                    <span style="font-size: 0.75rem; opacity: 0.9; font-weight: 400;">Sistema de Rendiciones</span>
                 </div>
             </div>
-            
-            <nav class="nav">
-                <a href="@Url.Action("Dashboard", "Supervisores")" class="nav-link active">
-                    <i class="fas fa-home"></i>
-                    Panel de Control
+            <nav class="nav" style="display: flex; align-items: center; gap: 8px;">
+                <a href="@Url.Action("Dashboard", "Supervisores")" class="nav-link active" style="color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-home"></i> Inicio
                 </a>
-                <a href="@Url.Action("RendicionesPendientes", "Supervisores")" class="nav-link">
-                    <i class="fas fa-clock"></i>
-                    Pendientes de Revisión
+                <a href="@Url.Action("RendicionesPendientes", "Supervisores")" class="nav-link" style="color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-file-invoice"></i> Rendiciones
                 </a>
-                <a href="@Url.Action("Notificaciones", "Supervisores")" class="nav-link">
-                    <i class="fas fa-bell"></i>
-                    Notificaciones
+                @{
+                    var userRole = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "empleado";
+                    var userEmail = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "";
+                    var isCamila = userRole == "aprobador1" && userEmail == "camila.flores@primar.cl";
+                }
+                @if (isCamila)
+                {
+                    <a href="@Url.Action("Index", "Admin")" class="nav-link" style="color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-users"></i> Gestión de Usuarios
+                    </a>
+                }
+                <a href="@Url.Action("Notificaciones", "Supervisores")" class="nav-link" style="color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; position: relative;">
+                    <i class="fas fa-bell"></i> Notificaciones
                     @if (ViewBag.NotificacionesNoLeidas != null && ViewBag.NotificacionesNoLeidas > 0)
                     {
-                        <span class="badge">@ViewBag.NotificacionesNoLeidas</span>
+                        <span class="badge" style="position: absolute; top: -4px; right: -4px; background: #ef4444; color: white; font-size: 0.7rem; font-weight: 600; padding: 2px 6px; border-radius: 10px; min-width: 18px; text-align: center;">@ViewBag.NotificacionesNoLeidas</span>
                     }
                 </a>
-                <a href="@Url.Action("Perfil", "Supervisores")" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    Mi Perfil
+                <a href="@Url.Action("Ayuda", "Supervisores")" class="nav-link" style="color: white; text-decoration: none; padding: 10px 16px; border-radius: 8px; font-weight: 500; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-question-circle"></i> Ayuda
                 </a>
             </nav>
-            
-            <div class="user-section">
-                <div class="user-info">
-                    <span class="user-name">@(ViewBag.UserName ?? "Usuario")</span>
-                    <span class="user-role role-supervisor">Supervisor</span>
-                </div>
-                <button class="btn-logout" onclick="window.location.href='@Url.Action("Logout", "Account")'">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Cerrar Sesión
+            <div style="height: 36px; border-left: 1px solid rgba(255,255,255,0.3); margin: 0 18px;"></div>
+            <div class="user-section" style="display: flex; align-items: center; gap: 16px;">
+                <span style="color: white; font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;"><i class="fas fa-user-circle"></i> @(ViewBag.UserName ?? "Usuario")</span>
+                <a href="/perfil-supervisor" style="color: white; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;"><i class="fas fa-user"></i> Mi Perfil</a>
+                <button class="btn-logout" onclick="window.location.href='@Url.Action("Logout", "Account")'" style="background: transparent; border: 1px solid rgba(255,255,255,0.5); color: white; padding: 8px 16px; border-radius: 8px; font-size: 0.95rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s;">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                 </button>
             </div>
         </div>
@@ -126,36 +129,6 @@
                 </div>
             </div>
 
-            <!-- Dashboard de gráficos -->
-            <div class="charts-section">
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-pie"></i> Estado de Rendiciones</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="statusChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-line"></i> Aprobaciones por Día</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="approvalChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-container">
-                    <div class="chart-header">
-                        <h3><i class="fas fa-chart-bar"></i> Por Departamento</h3>
-                    </div>
-                    <div class="chart-content">
-                        <canvas id="departmentChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
             <!-- Acciones rápidas -->
             <div class="actions-section">
                 <h2>Acciones Rápidas</h2>
@@ -173,27 +146,6 @@
                         </div>
                     </a>
 
-                    @{
-                        var userRole = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value ?? "empleado";
-                        var userEmail = Context.User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value ?? "";
-                        var isCamila = userRole == "aprobador1" && userEmail == "camila.flores@primar.cl";
-                    }
-                    @if (isCamila)
-                    {
-                        <a href="@Url.Action("Index", "Admin")" class="action-card">
-                            <div class="action-icon">
-                                <i class="fas fa-users-cog"></i>
-                            </div>
-                            <div class="action-content">
-                                <h3>Gestión de Usuarios</h3>
-                                <p>Administrar usuarios del sistema</p>
-                            </div>
-                            <div class="action-arrow">
-                                <i class="fas fa-chevron-right"></i>
-                            </div>
-                        </a>
-                    }
-
                     <a href="@Url.Action("Notificaciones", "Supervisores")" class="action-card">
                         <div class="action-icon">
                             <i class="fas fa-bell"></i>
@@ -206,6 +158,16 @@
                             <i class="fas fa-chevron-right"></i>
                         </div>
                     </a>
+
+                    <a href="@Url.Action("Ayuda", "Supervisores")" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3>Ayuda</h3>
+                            <p>Guía rápida para supervisores</p>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -214,16 +176,19 @@
             {
                 <div class="activity-section">
                     <h2>Actividad Reciente</h2>
-                    <div class="activity-list">
-                        @foreach (var actividad in Model.UltimasRendiciones)
+                    <div class="activity-list" id="actividadReciente">
+                        @foreach (var rendicion in Model.UltimasRendiciones.Take(5))
                         {
-                            <div class="activity-item">
-                                <div class="activity-dot"></div>
-                                <div class="activity-content">
-                                    <p class="activity-text">@actividad</p>
-                                    <span class="activity-time">Hace 2 horas</span>
+                            <a href="@Url.Action("Detalle", "Rendiciones", new { id = rendicion.Id })" class="activity-item" style="display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;padding:18px 24px;border-bottom:1px solid #e2e8f0;background:#fff;transition:background 0.2s;">
+                                <div class="activity-dot" style="width:12px;height:12px;border-radius:50%;background:#2563eb;"></div>
+                                <div class="activity-content" style="flex:1;">
+                                    <strong>Rendición #@rendicion.Id: @rendicion.Titulo</strong>
+                                    <span class="status-badge @rendicion.Estado.ToLower()" style="font-size:1.1em;font-weight:600;">@rendicion.EstadoLegible</span>
                                 </div>
-                            </div>
+                                <div class="activity-time" style="font-size:0.9rem;color:#64748b;min-width:110px;text-align:right;">
+                                    @rendicion.FechaCreacion.ToString("dd-MM-yyyy HH:mm")
+                                </div>
+                            </a>
                         }
                     </div>
                 </div>
@@ -546,51 +511,6 @@ body {
 .kpi-trend.negative { color: var(--primar-danger); }
 .kpi-trend.neutral { color: var(--primar-text-light); }
 
-/* Charts section */
-.charts-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 24px;
-    margin-bottom: 48px;
-}
-
-.chart-container {
-    background: var(--primar-white);
-    border-radius: var(--primar-radius);
-    box-shadow: var(--primar-shadow);
-    overflow: hidden;
-    transition: var(--primar-transition);
-}
-
-.chart-container:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--primar-shadow-lg);
-}
-
-.chart-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--primar-border);
-    background: var(--primar-secondary);
-}
-
-.chart-header h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--primar-text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.chart-header i {
-    color: var(--primar-primary);
-}
-
-.chart-content {
-    padding: 24px;
-    height: 300px;
-}
-
 /* Actions */
 .actions-section {
     margin-bottom: 48px;
@@ -786,12 +706,7 @@ body {
     }
     
     .kpi-grid,
-    .charts-section,
     .actions-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .charts-section {
         grid-template-columns: 1fr;
     }
     
@@ -1069,6 +984,45 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(createSalmon, 5000);
     });
 </script>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/notificacionesHub")
+            .build();
+
+        connection.on("ActualizarActividadReciente", function (rendicion) {
+            // Lógica para agregar la nueva rendición al inicio de la lista y mantener solo 5
+            const contenedor = document.getElementById("actividadReciente");
+            if (!contenedor) return;
+            // Crear el elemento
+            const item = document.createElement("a");
+            item.className = "activity-item";
+            item.href = `/Rendiciones/Detalle/${rendicion.id}`;
+            item.style = "display:flex;align-items:center;gap:16px;text-decoration:none;color:inherit;padding:18px 24px;border-bottom:1px solid #e2e8f0;background:#fff;transition:background 0.2s;";
+            item.innerHTML = `
+                <div class='activity-dot' style='width:12px;height:12px;border-radius:50%;background:#2563eb;'></div>
+                <div class='activity-content' style='flex:1;'>
+                    <div style='font-weight:600;font-size:1.05rem;'>${rendicion.numeroTicket} - ${rendicion.titulo}</div>
+                    <div style='font-size:0.95rem;color:#64748b;'>
+                        Monto: $${rendicion.montoTotal.toLocaleString('es-CL')} | Estado: <span style='font-weight:600;'>${rendicion.estadoLegible}</span> | Usuario: ${rendicion.usuario}
+                    </div>
+                </div>
+                <div class='activity-time' style='font-size:0.9rem;color:#64748b;min-width:110px;text-align:right;'>
+                    ${new Date(rendicion.fechaCreacion).toLocaleString('es-CL')}
+                </div>
+            `;
+            // Insertar al inicio
+            contenedor.prepend(item);
+            // Limitar a 5 elementos
+            while (contenedor.children.length > 5) {
+                contenedor.removeChild(contenedor.lastChild);
+            }
+        });
+        connection.start();
+    </script>
+}
 
 </body>
 </html> 

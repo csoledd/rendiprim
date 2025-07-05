@@ -4,10 +4,15 @@ namespace RendicionesPrimar.Models.ViewModels
 {
     public class InformacionPersonalViewModel
     {
-        [Required(ErrorMessage = "El nombre completo es requerido")]
-        [StringLength(100, ErrorMessage = "El nombre completo no puede exceder 100 caracteres")]
-        [Display(Name = "Nombre Completo")]
-        public string NombreCompleto { get; set; } = string.Empty;
+        [Required(ErrorMessage = "El nombre es requerido")]
+        [StringLength(100, ErrorMessage = "El nombre no puede exceder 100 caracteres")]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Los apellidos son requeridos")]
+        [StringLength(100, ErrorMessage = "Los apellidos no pueden exceder 100 caracteres")]
+        [Display(Name = "Apellidos")]
+        public string Apellidos { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El RUT es requerido")]
         [StringLength(20, ErrorMessage = "El RUT no puede exceder 20 caracteres")]

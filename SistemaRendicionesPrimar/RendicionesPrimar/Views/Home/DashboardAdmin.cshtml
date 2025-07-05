@@ -1,0 +1,39 @@
+@model RendicionesPrimar.Models.ViewModels.DashboardViewModel
+
+<!-- Actividad reciente (ADMIN) -->
+@if (Model?.UltimasRendiciones != null && Model.UltimasRendiciones.Any())
+{
+    <div class="recent-section">
+        <h2>Actividad Reciente</h2>
+        <div class="recent-list">
+            @foreach (var rendicion in Model.UltimasRendiciones)
+            {
+                <a href="@Url.Action("Detalle", "Rendiciones", new { id = rendicion.Id })" class="recent-item">
+                    <div class="recent-icon @(rendicion.Estado.ToLower())">
+                        @if (rendicion.Estado == "Aprobada") { <i class="fas fa-check"></i> }
+                        else if (rendicion.Estado == "Rechazada") { <i class="fas fa-times"></i> }
+                        else if (rendicion.Estado == "Pendiente") { <i class="fas fa-clock"></i> }
+                        else { <i class="fas fa-file-invoice"></i> }
+                    </div>
+                    <div class="recent-content">
+                        <strong>Rendición #@rendicion.Id: @rendicion.Titulo</strong>
+                        <span class="status-badge @rendicion.Estado.ToLower()" style="font-size:1.1em;font-weight:600;">@rendicion.EstadoLegible</span>
+                    </div>
+                    <div class="recent-date">
+                        @rendicion.FechaCreacion.ToString("dd MMM yyyy")
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="empty-state">
+        <div class="empty-icon">
+            <i class="fas fa-file-invoice"></i>
+        </div>
+        <h3>No hay rendiciones recientes</h3>
+        <p>Crea o gestiona rendiciones para ver actividad aquí</p>
+    </div>
+} 

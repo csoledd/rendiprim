@@ -69,7 +69,7 @@
                     <div>
                         <label style="font-weight: 600; color: var(--primar-text-light); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Nombre Completo</label>
                         <p style="font-size: 1.1rem; font-weight: 500; color: var(--primar-text); margin: 8px 0 0 0;">
-                            @(string.IsNullOrEmpty(Model.NombreCompleto) ? "No especificado" : Model.NombreCompleto)
+                            @(string.IsNullOrEmpty(Model.Apellidos) ? "No especificado" : Model.Nombre + " " + Model.Apellidos)
                         </p>
                     </div>
                     <div>

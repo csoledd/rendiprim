@@ -5,6 +5,7 @@ using RendicionesPrimar.Data;
 using RendicionesPrimar.Models;
 using RendicionesPrimar.Models.ViewModels;
 using System.Security.Claims;
+using RendicionesPrimar.Services;
 
 namespace RendicionesPrimar.Controllers
 {
@@ -12,10 +13,12 @@ namespace RendicionesPrimar.Controllers
     public class GerentesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly RendicionService _rendicionService;
 
-        public GerentesController(ApplicationDbContext context)
+        public GerentesController(ApplicationDbContext context, RendicionService rendicionService)
         {
             _context = context;
+            _rendicionService = rendicionService;
         }
 
         public async Task<IActionResult> Dashboard()
@@ -61,8 +64,7 @@ namespace RendicionesPrimar.Controllers
                 .Take(5)
                 .ToListAsync();
 
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} de {r.Usuario?.Nombre} - Pendiente aprobación final").ToList();
+            modelo.UltimasRendiciones = ultimasRendiciones;
 
             return View("Dashboard", modelo);
         }
@@ -85,19 +87,12 @@ namespace RendicionesPrimar.Controllers
         public async Task<IActionResult> Notificaciones()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
-
-            // Obtener solo notificaciones específicas de gerentes
             var notificaciones = await _context.Notificaciones
                 .Include(n => n.Rendicion)
                 .Where(n => n.UsuarioId == userId && n.TipoRol == "gerente")
                 .OrderByDescending(n => n.FechaCreacion)
                 .ToListAsync();
-
-            ViewBag.NotificacionesNoLeidas = notificaciones.Count(n => !n.Leido);
-            ViewBag.UserName = nombreUsuario;
-
-            return View("Notificaciones", notificaciones);
+            return View(notificaciones);
         }
 
         public async Task<IActionResult> Reportes()
@@ -123,84 +118,114 @@ namespace RendicionesPrimar.Controllers
             return View("Reportes", estadisticas);
         }
 
-        public async Task<IActionResult> AnalisisFinanciero()
+        [HttpPost]
+        public async Task<IActionResult> AprobarRendicion(int id, string? comentarios)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var nombreUsuario = await ObtenerNombreUsuario(userId);
-            ViewBag.UserName = nombreUsuario;
-
-            // Análisis financiero detallado
-            var analisis = new
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var ok = await _rendicionService.AprobarSegundaInstanciaAsync(id, userId, comentarios);
+            if (!ok)
             {
-                MontoTotalPendiente = await _context.Rendiciones.Where(r => r.Estado == "aprobado_1").SumAsync(r => r.MontoTotal),
-                MontoTotalAprobado = await _context.Rendiciones.Where(r => r.Estado == "aprobado_2").SumAsync(r => r.MontoTotal),
-                MontoTotalPagado = await _context.Rendiciones.Where(r => r.Estado == "pagado").SumAsync(r => r.MontoTotal),
-                PromedioRendicion = await _context.Rendiciones.AverageAsync(r => r.MontoTotal),
-                RendicionesPorDepartamento = await _context.Rendiciones
-                    .GroupBy(r => r.Departamento)
-                    .Select(g => new { Departamento = g.Key, Total = g.Sum(r => r.MontoTotal) })
-                    .ToListAsync()
-            };
-
-            return View("AnalisisFinanciero", analisis);
+                TempData["ErrorMessage"] = "No se pudo aprobar la rendición";
+                return RedirectToAction("RendicionesPendientes");
+            }
+            TempData["SuccessMessage"] = "Rendición aprobada";
+            return RedirectToAction("RendicionesPendientes");
         }
 
         [HttpPost]
-        public async Task<IActionResult> MarcarNotificacionLeida(int id)
+        public async Task<IActionResult> RechazarRendicion(int id, string? comentarios)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
-            
-            var notificacion = await _context.Notificaciones
-                .FirstOrDefaultAsync(n => n.Id == id && n.UsuarioId == userId && n.TipoRol == "gerente");
-
-            if (notificacion != null)
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var ok = await _rendicionService.RechazarAsync(id, comentarios ?? "Rechazada por el gerente", userId);
+            if (!ok)
             {
-                notificacion.Leido = true;
-                await _context.SaveChangesAsync();
+                TempData["ErrorMessage"] = "No se pudo rechazar la rendición";
+                return RedirectToAction("RendicionesPendientes");
             }
-
-            return Json(new { success = true });
+            TempData["SuccessMessage"] = "Rendición rechazada";
+            return RedirectToAction("RendicionesPendientes");
         }
 
         [HttpGet]
-        [Route("Gerentes/Perfil")]
-        public async Task<IActionResult> Perfil()
+        [Route("/perfil-gerente")]
+        public async Task<IActionResult> PerfilFijo()
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario == null)
-                return NotFound();
+            var aprobador = await _context.Aprobadores.FindAsync(userId);
+            var nombreUsuario = aprobador != null ? aprobador.Nombre : "Usuario";
+            ViewBag.UserName = nombreUsuario;
+            if (aprobador == null)
+                return Content("Aprobador no encontrado");
             var viewModel = new InformacionPersonalViewModel
             {
-                NombreCompleto = usuario.NombreCompleto,
-                Rut = usuario.Rut,
-                Email = usuario.Email,
-                Telefono = usuario.Telefono,
-                Cargo = usuario.Cargo,
-                Departamento = usuario.Departamento
+                Nombre = aprobador.Nombre,
+                Apellidos = aprobador.Apellidos,
+                Rut = aprobador.Rut,
+                Email = aprobador.Email,
+                Cargo = aprobador.Cargo,
+                Departamento = aprobador.Departamento,
+                Telefono = aprobador.Telefono
             };
-            return View(viewModel);
+            return View("Perfil", viewModel);
         }
 
+        [Authorize(Roles = "aprobador2")]
         [HttpPost]
-        [Route("Gerentes/Perfil")]
-        public async Task<IActionResult> Perfil(InformacionPersonalViewModel model)
+        [Route("/perfil-gerente")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PerfilFijo(InformacionPersonalViewModel model)
         {
             var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
             if (!ModelState.IsValid)
-                return View(model);
-            var usuario = await _context.Usuarios.FindAsync(userId);
-            if (usuario == null)
-                return NotFound();
-            usuario.NombreCompleto = model.NombreCompleto;
-            usuario.Rut = model.Rut;
-            usuario.Email = model.Email;
-            usuario.Telefono = model.Telefono;
-            usuario.Cargo = model.Cargo;
-            usuario.Departamento = model.Departamento;
+                return Content("Modelo inválido");
+
+            var aprobador = await _context.Aprobadores.FindAsync(userId);
+            if (aprobador == null)
+                return Content("Aprobador no encontrado");
+
+            // Solo actualiza los campos permitidos
+            aprobador.Nombre = model.Nombre;
+            aprobador.Apellidos = model.Apellidos;
+            aprobador.Rut = model.Rut;
+            aprobador.Email = model.Email;
+            aprobador.Telefono = model.Telefono;
+            aprobador.Cargo = model.Cargo;
+            aprobador.Departamento = model.Departamento;
+            // NO toques: password_hash, rol, activo, mfa, etc.
+
+            _context.Entry(aprobador).Property(x => x.Nombre).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Apellidos).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Rut).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Email).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Telefono).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Cargo).IsModified = true;
+            _context.Entry(aprobador).Property(x => x.Departamento).IsModified = true;
+
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Información personal actualizada exitosamente";
-            return RedirectToAction("Perfil");
+            TempData["SuccessMessage"] = "¡Cambios guardados!";
+            return RedirectToAction("PerfilFijo");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Perfil()
+        {
+            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var aprobador = await _context.Aprobadores.FindAsync(userId);
+            var nombreUsuario = aprobador != null ? aprobador.Nombre : "Usuario";
+            ViewBag.UserName = nombreUsuario;
+            if (aprobador == null)
+                return Content("Aprobador no encontrado");
+            var viewModel = new InformacionPersonalViewModel
+            {
+                Nombre = aprobador.Nombre,
+                Apellidos = aprobador.Apellidos,
+                Rut = aprobador.Rut,
+                Email = aprobador.Email,
+                Cargo = aprobador.Cargo,
+                Departamento = aprobador.Departamento,
+                Telefono = aprobador.Telefono
+            };
+            return View("Perfil", viewModel);
         }
 
         private async Task<string> ObtenerNombreUsuario(int userId)
@@ -209,4 +234,4 @@ namespace RendicionesPrimar.Controllers
             return usuario?.Nombre ?? "Usuario";
         }
     }
-} 
+}

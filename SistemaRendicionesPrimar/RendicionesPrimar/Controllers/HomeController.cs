@@ -29,9 +29,17 @@ namespace RendicionesPrimar.Controllers
                 return usuario.Nombre;
             }
 
-            // Si no se encuentra en usuarios, buscar en aprobadores usando el modelo plano
-            var aprobador = await _context.Database.SqlQueryRaw<AprobadorSimple>("SELECT * FROM aprobadores WHERE id = {0}", userId).FirstOrDefaultAsync();
-            return aprobador?.Nombre ?? "Usuario";
+            // Si no se encuentra en usuarios, buscar en aprobadores usando SQL directo
+            try
+            {
+                var aprobadores = await _context.Database.SqlQueryRaw<dynamic>("SELECT nombre FROM aprobadores WHERE id = {0}", userId).ToListAsync();
+                var aprobador = aprobadores.FirstOrDefault();
+                return aprobador?.nombre ?? "Usuario";
+            }
+            catch
+            {
+                return "Usuario";
+            }
         }
 
         // Método para obtener los datos completos del usuario buscando en ambas tablas
@@ -44,13 +52,25 @@ namespace RendicionesPrimar.Controllers
                 return usuario;
             }
 
-            // Si no se encuentra en usuarios, buscar en aprobadores usando el modelo plano
-            var aprobador = await _context.Database.SqlQueryRaw<AprobadorSimple>("SELECT * FROM aprobadores WHERE id = {0}", userId).FirstOrDefaultAsync();
-            return aprobador;
+            // Si no se encuentra en usuarios, buscar en aprobadores usando SQL directo
+            try
+            {
+                var aprobadores = await _context.Database.SqlQueryRaw<dynamic>("SELECT * FROM aprobadores WHERE id = {0}", userId).ToListAsync();
+                return aprobadores.FirstOrDefault();
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value ?? "empleado";
 
@@ -113,39 +133,27 @@ namespace RendicionesPrimar.Controllers
                 .Where(n => n.UsuarioId == userId && !n.Leido)
                 .CountAsync();
 
-            ViewBag.NotificacionesNoLeidas = notificacionesNoLeidas;
-            ViewBag.UserRole = userRole;
-            ViewBag.UserName = nombreUsuario;
+            var rendicionesQuery = _context.Rendiciones.Where(r => r.UsuarioId == userId);
 
-            // Crear el modelo de dashboard para empleado
-            var modelo = new DashboardViewModel
-            {
-                UserName = nombreUsuario,
-                UserRole = userRole,
-                NotificacionesNoLeidas = notificacionesNoLeidas,
-                TotalRendiciones = await _context.Rendiciones
-                    .Where(r => r.UsuarioId == userId)
-                    .CountAsync(),
-                RendicionesPendientes = await _context.Rendiciones
-                    .Where(r => r.UsuarioId == userId && r.Estado == "pendiente")
-                    .CountAsync(),
-                RendicionesAprobadas = await _context.Rendiciones
-                    .Where(r => r.UsuarioId == userId && (r.Estado == "aprobado_2" || r.Estado == "pagado"))
-                    .CountAsync(),
-                MontoTotal = await _context.Rendiciones
-                    .Where(r => r.UsuarioId == userId)
-                    .SumAsync(r => r.MontoTotal)
-            };
+            var totalRendiciones = await rendicionesQuery.CountAsync();
+            var rendicionesPendientes = await rendicionesQuery.Where(r => r.Estado == "pendiente").CountAsync();
+            var rendicionesAprobadas = await rendicionesQuery.Where(r => r.Estado == "aprobado_2" || r.Estado == "pagado").CountAsync();
+            var rendicionesRechazadas = await rendicionesQuery.Where(r => r.Estado == "rechazado").CountAsync();
+            var montoTotal = await rendicionesQuery.SumAsync(r => r.MontoTotal);
 
-            // Obtener últimas rendiciones del empleado
-            var ultimasRendiciones = await _context.Rendiciones
-                .Where(r => r.UsuarioId == userId)
+            var ultimasRendiciones = await rendicionesQuery
                 .OrderByDescending(r => r.FechaCreacion)
                 .Take(5)
                 .ToListAsync();
 
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} - {r.Titulo} ({r.Estado})").ToList();
+            var modelo = new DashboardViewModel
+            {
+                TotalRendiciones = totalRendiciones,
+                RendicionesPendientes = rendicionesPendientes,
+                RendicionesAprobadas = rendicionesAprobadas,
+                RendicionesRechazadas = rendicionesRechazadas,
+                UltimasRendiciones = ultimasRendiciones
+            };
 
             return View("DashboardEmpleado", modelo);
         }
@@ -176,31 +184,16 @@ namespace RendicionesPrimar.Controllers
             // Crear el modelo de dashboard para supervisor
             var modelo = new DashboardViewModel
             {
-                UserName = nombreUsuario,
-                UserRole = userRole,
-                NotificacionesNoLeidas = notificacionesNoLeidas,
-                TotalRendiciones = await _context.Rendiciones
-                    .Where(r => r.Estado == "pendiente" || r.Estado == "aprobado_2")
-                    .CountAsync(),
-                RendicionesPendientes = await _context.Rendiciones
-                    .Where(r => r.Estado == "pendiente")
-                    .CountAsync(),
-                RendicionesAprobadas = await _context.Rendiciones
-                    .Where(r => r.Estado == "aprobado_2")
-                    .CountAsync(),
-                MontoTotal = 0 // Los supervisores no ven montos totales
+                TotalRendiciones = await _context.Rendiciones.CountAsync(),
+                RendicionesPendientes = await _context.Rendiciones.Where(r => r.Estado == "pendiente" || r.Estado == "aprobado_1").CountAsync(),
+                RendicionesAprobadas = await _context.Rendiciones.Where(r => r.Estado == "aprobado_2" || r.Estado == "pagado").CountAsync(),
+                RendicionesRechazadas = await _context.Rendiciones.Where(r => r.Estado == "rechazado").CountAsync(),
+                UltimasRendiciones = await _context.Rendiciones
+                                        .Include(r => r.Usuario)
+                                        .OrderByDescending(r => r.FechaCreacion)
+                                        .Take(5)
+                                        .ToListAsync()
             };
-
-            // Obtener últimas rendiciones pendientes de aprobación
-            var ultimasRendiciones = await _context.Rendiciones
-                .Include(r => r.Usuario)
-                .Where(r => r.Estado == "pendiente" || r.Estado == "aprobado_2")
-                .OrderByDescending(r => r.FechaCreacion)
-                .Take(5)
-                .ToListAsync();
-
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} de {r.Usuario?.Nombre} - {r.Estado}").ToList();
 
             return View("DashboardSupervisor", modelo);
         }
@@ -231,31 +224,17 @@ namespace RendicionesPrimar.Controllers
             // Crear el modelo de dashboard para gerente
             var modelo = new DashboardViewModel
             {
-                UserName = nombreUsuario,
-                UserRole = userRole,
-                NotificacionesNoLeidas = notificacionesNoLeidas,
-                TotalRendiciones = await _context.Rendiciones
-                    .Where(r => r.Estado == "aprobado_1")
-                    .CountAsync(),
-                RendicionesPendientes = await _context.Rendiciones
-                    .Where(r => r.Estado == "aprobado_1")
-                    .CountAsync(),
-                RendicionesAprobadas = 0,
-                MontoTotal = await _context.Rendiciones
-                    .Where(r => r.Estado == "aprobado_1")
-                    .SumAsync(r => r.MontoTotal)
+                TotalRendiciones = await _context.Rendiciones.CountAsync(),
+                RendicionesPendientes = await _context.Rendiciones.Where(r => r.Estado == "pendiente" || r.Estado == "aprobado_1").CountAsync(),
+                RendicionesAprobadas = await _context.Rendiciones.Where(r => r.Estado == "aprobado_2" || r.Estado == "pagado").CountAsync(),
+                RendicionesRechazadas = await _context.Rendiciones.Where(r => r.Estado == "rechazado").CountAsync(),
+                MontoTotal = await _context.Rendiciones.SumAsync(r => r.MontoTotal),
+                UltimasRendiciones = await _context.Rendiciones
+                                        .Include(r => r.Usuario)
+                                        .OrderByDescending(r => r.FechaCreacion)
+                                        .Take(5)
+                                        .ToListAsync()
             };
-
-            // Obtener últimas rendiciones pendientes de aprobación final
-            var ultimasRendiciones = await _context.Rendiciones
-                .Include(r => r.Usuario)
-                .Where(r => r.Estado == "aprobado_1")
-                .OrderByDescending(r => r.FechaCreacion)
-                .Take(5)
-                .ToListAsync();
-
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} de {r.Usuario?.Nombre} - Pendiente aprobación final").ToList();
 
             return View("DashboardGerente", modelo);
         }
@@ -296,18 +275,14 @@ namespace RendicionesPrimar.Controllers
                 RendicionesAprobadas = await _context.Rendiciones
                     .Where(r => r.Estado == "aprobado_2" || r.Estado == "pagado")
                     .CountAsync(),
-                MontoTotal = await _context.Rendiciones.SumAsync(r => r.MontoTotal)
+                RendicionesRechazadas = await _context.Rendiciones.Where(r => r.Estado == "rechazado").CountAsync(),
+                MontoTotal = await _context.Rendiciones.SumAsync(r => r.MontoTotal),
+                UltimasRendiciones = await _context.Rendiciones
+                                        .Include(r => r.Usuario)
+                                        .OrderByDescending(r => r.FechaCreacion)
+                                        .Take(5)
+                                        .ToListAsync()
             };
-
-            // Obtener últimas rendiciones generales
-            var ultimasRendiciones = await _context.Rendiciones
-                .Include(r => r.Usuario)
-                .OrderByDescending(r => r.FechaCreacion)
-                .Take(5)
-                .ToListAsync();
-
-            modelo.UltimasRendiciones = ultimasRendiciones.Select(r => 
-                $"Rendición {r.NumeroTicket} de {r.Usuario?.Nombre} - {r.Estado}").ToList();
 
             return View("DashboardAdmin", modelo);
         }
@@ -367,7 +342,7 @@ namespace RendicionesPrimar.Controllers
         [HttpPost]
         public async Task<IActionResult> EliminarNotificacion(int id)
         {
-            var userId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? "0");
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
             var notificacion = await _context.Notificaciones.FirstOrDefaultAsync(n => n.Id == id && n.UsuarioId == userId);
             if (notificacion != null)
             {
